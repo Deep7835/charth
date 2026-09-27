@@ -35,3 +35,21 @@ export const localeMeta: Record<Locale, LocaleMeta> = {
 export function hasLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
+
+/** Country (ISO alpha-2) used as the default in data tools for each language. */
+export const defaultCountry: Record<Locale, string> = {
+  en: "US",
+  es: "MX",
+  "pt-br": "BR",
+  hi: "IN",
+  id: "ID",
+  tr: "TR",
+  vi: "VN",
+  de: "DE",
+  fr: "FR",
+  ja: "JP",
+  ko: "KR",
+  ru: "RU",
+  it: "IT",
+  ar: "SA",
+};

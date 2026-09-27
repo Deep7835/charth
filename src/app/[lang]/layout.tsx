@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site";
 import { hasLocale, localeMeta, locales } from "@/i18n/config";
 import { getMessages } from "@/i18n/messages";
 import { getSiteMessages } from "@/i18n/site";
+import { getMoreMessages } from "@/i18n/more";
 import { getToolsMessages } from "@/i18n/tools";
 import { ConsentAnalytics } from "@/components/layout/ConsentAnalytics";
 import { SiteEffects } from "@/components/layout/SiteEffects";
@@ -32,7 +33,7 @@ export const viewport: Viewport = {
 export default async function LocaleLayout({ children, params }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
-  const [t, tools, site] = await Promise.all([getMessages(lang), getToolsMessages(lang), getSiteMessages(lang)]);
+  const [t, tools, site, more] = await Promise.all([getMessages(lang), getToolsMessages(lang), getSiteMessages(lang), getMoreMessages(lang)]);
 
   return (
     <html lang={localeMeta[lang].hreflang} dir={localeMeta[lang].dir}>
@@ -43,9 +44,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         >
           {t.nav.skip}
         </a>
-        <SiteHeader locale={lang} t={t.nav} site={site} tools={tools} boardDefaultName={t.board.defaultMan} />
+        <SiteHeader locale={lang} t={t.nav} site={site} tools={tools} more={more} boardDefaultName={t.board.defaultMan} />
         <main id="main">{children}</main>
-        <SiteFooter locale={lang} t={t.footer} tools={tools} site={site} />
+        <SiteFooter locale={lang} t={t.footer} tools={tools} site={site} more={more} />
         <SiteEffects backToTop={site.backToTop} />
         <ConsentAnalytics
           gaId={siteConfig.gaId}

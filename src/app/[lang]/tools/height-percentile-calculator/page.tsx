@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { toolPath } from "@/config/tools";
 import { ADULT_SD, countryHeights, WORLD } from "@/data/heightByCountry";
-import { hasLocale, localeMeta, type Locale } from "@/i18n/config";
+import { defaultCountry, hasLocale, localeMeta } from "@/i18n/config";
 import { getToolsMessages } from "@/i18n/tools";
 import { PercentileCalculator } from "@/components/tools/PercentileCalculator";
 import { ContentSection, ToolPage } from "@/components/tools/ToolPage";
@@ -11,22 +11,6 @@ import { pageMetadata } from "@/lib/seo";
 
 const slug = "height-percentile-calculator";
 
-const defaultCountry: Record<Locale, string> = {
-  en: "US",
-  es: "MX",
-  "pt-br": "BR",
-  hi: "IN",
-  id: "ID",
-  tr: "TR",
-  vi: "VN",
-  de: "DE",
-  fr: "FR",
-  ja: "JP",
-  ko: "KR",
-  ru: "RU",
-  it: "IT",
-  ar: "SA",
-};
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/tools/height-percentile-calculator">): Promise<Metadata> {
   const { lang } = await params;

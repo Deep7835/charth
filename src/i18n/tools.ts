@@ -1,7 +1,14 @@
+import type { ToolSlug } from "@/config/tools";
 import type { Locale } from "./config";
-import type { ToolsMessages } from "./tools/en";
+import { getMoreMessages } from "./more";
+import type { ToolsMessages as BaseToolsMessages } from "./tools/en";
 
-const loaders: Record<Locale, () => Promise<{ default: ToolsMessages }>> = {
+/** Tool strings plus the names of every tool (some live in the Phase 4 "more" namespace). */
+export type ToolsMessages = Omit<BaseToolsMessages, "names"> & {
+  names: Record<ToolSlug, { name: string; blurb: string }>;
+};
+
+const loaders: Record<Locale, () => Promise<{ default: BaseToolsMessages }>> = {
   en: () => import("./tools/en"),
   es: () => import("./tools/es"),
   "pt-br": () => import("./tools/pt-br"),
@@ -19,7 +26,6 @@ const loaders: Record<Locale, () => Promise<{ default: ToolsMessages }>> = {
 };
 
 export async function getToolsMessages(locale: Locale): Promise<ToolsMessages> {
-  return (await loaders[locale]()).default;
+  const [base, more] = await Promise.all([loaders[locale]().then((m) => m.default), getMoreMessages(locale)]);
+  return { ...base, names: { ...base.names, ...more.names } };
 }
-
-export type { ToolsMessages };

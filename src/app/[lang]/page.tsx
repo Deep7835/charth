@@ -7,6 +7,10 @@ import { getToolsMessages } from "@/i18n/tools";
 import { getSiteMessages } from "@/i18n/site";
 import { boardUi } from "@/lib/boardUi";
 import { RelatedTools } from "@/components/tools/ToolPage";
+import { getMoreMessages } from "@/i18n/more";
+import { personById, personName } from "@/lib/people";
+import { formatMetric } from "@/lib/units";
+import Link from "next/link";
 import { HeightBoard } from "@/components/board/HeightBoard";
 import { faqSchema, jsonLd, pageMetadata, webAppSchema } from "@/lib/seo";
 
@@ -21,7 +25,11 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const locale: Locale = lang;
-  const [t, tools, site] = await Promise.all([getMessages(locale), getToolsMessages(locale), getSiteMessages(locale)]);
+  const [t, tools, site, more] = await Promise.all([getMessages(locale), getToolsMessages(locale), getSiteMessages(locale), getMoreMessages(locale)]);
+  const featured = [
+    "lebron-james", "cristiano-ronaldo", "lionel-messi", "taylor-swift", "tom-cruise", "dwayne-johnson",
+    "virat-kohli", "shah-rukh-khan", "luffy", "levi-ackerman", "gojo-satoru", "victor-wembanyama",
+  ].flatMap((id) => personById.get(id) ?? []);
   const h = t.home;
 
   return (
@@ -83,6 +91,28 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         </section>
 
         <RelatedTools locale={locale} t={tools} />
+
+        <section>
+          <h2 className="mb-4 text-2xl font-bold tracking-tight">{more.people.h1}</h2>
+          <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((p) => (
+              <li key={p.id}>
+                <Link
+                  href={`/${locale}/height/${p.id}`}
+                  className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 px-4 py-2.5 hover:border-blue-300 hover:bg-blue-50/40"
+                >
+                  <span className="truncate font-medium text-slate-900">{personName(p, locale)}</span>
+                  <bdi dir="ltr" className="shrink-0 text-sm tabular-nums text-slate-500">
+                    {formatMetric(p.heightCm)}
+                  </bdi>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link href={`/${locale}/height`} className="mt-3 inline-block text-sm font-semibold text-blue-700 hover:underline">
+            {more.people.h1} →
+          </Link>
+        </section>
 
         <section>
           <h2 className="mb-5 text-2xl font-bold tracking-tight">{h.faqTitle}</h2>

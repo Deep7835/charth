@@ -48,7 +48,10 @@ Strategy (from the Sept 2026 competitor research):
 
 ## Phase 4 — Content at scale (quality-gated)
 
-- [ ] Subject pages: `/[lang]/height/[slug]` with sourced height, board preset, similar-height list
+- [x] Tools: height predictor (mid-parental + current-height projection), average height by age / growth chart (NCD-RisC ages 5–19, 200 countries), BMI & healthy weight (WHO categories)
+- [x] Subject pages `/[lang]/height/[slug]` (~60 athletes, celebrities, characters, records) with to-scale board, world percentile, similar heights, FAQ + Person/FAQ/Breadcrumb JSON-LD; native-script names per locale; hub `/[lang]/height`
+- [x] Guides `/[lang]/guides/*`: measuring height at home, when do you stop growing (data-driven), couple height difference; Article JSON-LD
+- [ ] Add sources/citations per celebrity height; expand library (K-pop, cricket, football, more anime)
 - [ ] Curated "X vs Y" pages for high-demand pairs only
 - [ ] Anime / game character hubs (One Piece, Naruto, JJK, Genshin, Uma Musume)
 - [ ] Add locales: th, pl, nl, zh-Hans, zh-Hant

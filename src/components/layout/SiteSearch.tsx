@@ -72,10 +72,12 @@ export function SiteSearch({ locale, pages, defaultPerson, t }: Props) {
               group: "library" as const,
               title: name,
               sub: `${Math.round(item.heightCm)} cm`,
-              href: index.boardLink(locale, [
+              href: index.personById.has(item.id)
+                ? `/${locale}/height/${item.id}`
+                : index.boardLink(locale, [
                 { name: defaultPerson, heightCm: 175, kind: "male", color: index.palette[0] },
                 { name, heightCm: item.heightCm, kind: item.kind, object: item.object, aspect: item.aspect, build: item.build, adult: item.adult, color: item.color ?? index.palette[1] },
-              ]),
+                ]),
             };
           })
       : [];

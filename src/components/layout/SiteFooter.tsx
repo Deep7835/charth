@@ -5,11 +5,12 @@ import { localeMeta, locales, type Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/messages/en";
 import type { SiteMessages } from "@/i18n/site";
 import type { ToolsMessages } from "@/i18n/tools";
+import type { MoreMessages } from "@/i18n/more";
 import { CookieSettingsButton } from "./ConsentAnalytics";
 
-type Props = { locale: Locale; t: Messages["footer"]; tools: ToolsMessages; site: SiteMessages };
+type Props = { locale: Locale; t: Messages["footer"]; tools: ToolsMessages; site: SiteMessages; more: MoreMessages };
 
-export function SiteFooter({ locale, t, tools, site }: Props) {
+export function SiteFooter({ locale, t, tools, site, more }: Props) {
   return (
     <footer className="mt-16 border-t border-slate-200 bg-slate-50">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-sm text-slate-600">
@@ -24,6 +25,18 @@ export function SiteFooter({ locale, t, tools, site }: Props) {
               </Link>
             </li>
           ))}
+        </ul>
+        <ul className="flex flex-wrap gap-x-5 gap-y-1 font-medium">
+          <li>
+            <Link href={`/${locale}/height`} className="hover:text-slate-900">
+              {more.people.h1}
+            </Link>
+          </li>
+          <li>
+            <Link href={`/${locale}/guides`} className="hover:text-slate-900">
+              {more.guides.h1}
+            </Link>
+          </li>
         </ul>
         <ul className="flex flex-wrap gap-x-5 gap-y-1">
           <li>

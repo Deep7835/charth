@@ -3,3 +3,4 @@ export { library } from "@/data/library";
 export { libraryName, libraryNames } from "@/data/libraryNames";
 export { boardLink } from "@/lib/boardLink";
 export { palette } from "@/components/board/types";
+export { personById } from "@/lib/people";

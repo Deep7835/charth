@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/messages/en";
 import type { SiteMessages } from "@/i18n/site";
 import type { ToolsMessages } from "@/i18n/tools";
+import type { MoreMessages } from "@/i18n/more";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { SiteSearch } from "./SiteSearch";
@@ -20,14 +21,16 @@ export function Logo() {
   );
 }
 
-type Props = { locale: Locale; t: Messages["nav"]; site: SiteMessages; tools: ToolsMessages; boardDefaultName: string };
+type Props = { locale: Locale; t: Messages["nav"]; site: SiteMessages; tools: ToolsMessages; more: MoreMessages; boardDefaultName: string };
 
-export function SiteHeader({ locale, t, site, tools, boardDefaultName }: Props) {
+export function SiteHeader({ locale, t, site, tools, more, boardDefaultName }: Props) {
   const toolLinks = toolSlugs.map((s) => ({ href: `/${locale}${toolPath(s)}`, label: tools.names[s].name }));
   const pages = [
     { href: `/${locale}`, title: t.tool },
     { href: `/${locale}/tools`, title: tools.common.hubH1 },
     ...toolSlugs.map((s) => ({ href: `/${locale}${toolPath(s)}`, title: tools.names[s].name, description: tools.names[s].blurb })),
+    { href: `/${locale}/height`, title: more.people.h1, description: more.people.intro },
+    { href: `/${locale}/guides`, title: more.guides.h1, description: more.guides.intro },
     { href: `/${locale}/privacy`, title: site.privacy },
     { href: `/${locale}/terms`, title: site.terms },
   ];
@@ -61,7 +64,13 @@ export function SiteHeader({ locale, t, site, tools, boardDefaultName }: Props) 
           />
           <LanguageSwitcher locale={locale} label={t.language} />
           <MobileMenu
-            items={[{ href: `/${locale}`, label: t.tool }, { href: `/${locale}/tools`, label: t.tools }, ...toolLinks]}
+            items={[
+              { href: `/${locale}`, label: t.tool },
+              { href: `/${locale}/tools`, label: t.tools },
+              ...toolLinks,
+              { href: `/${locale}/height`, label: more.people.h1 },
+              { href: `/${locale}/guides`, label: more.guides.h1 },
+            ]}
             legal={[
               { href: `/${locale}/privacy`, label: site.privacy },
               { href: `/${locale}/terms`, label: site.terms },
