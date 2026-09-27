@@ -14,6 +14,14 @@ npm install
 npm run dev
 ```
 
+## Deploy (Cloudflare Workers)
+
+Deployed with [OpenNext for Cloudflare](https://opennext.js.org/cloudflare) as the Worker `charth` (see `wrangler.jsonc`, `open-next.config.ts`).
+
+- **Workers Builds (Git):** build command `npm run build`, deploy command `npx wrangler deploy`. On CI (`WORKERS_CI=1`) the `postbuild` step bundles the app with OpenNext and copies the prerendered pages into static assets.
+- **From your machine:** `npm run deploy` (or `npm run preview` to test the Worker locally).
+- Add `heightcomparechart.com` and `www.heightcomparechart.com` as custom domains on the Worker; `www` redirects to the apex.
+
 ## Environment variables
 
 | Variable | Purpose |
