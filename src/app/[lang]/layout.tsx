@@ -46,7 +46,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         </a>
         <SiteHeader locale={lang} t={t.nav} site={site} tools={tools} more={more} boardDefaultName={t.board.defaultMan} />
         <main id="main">{children}</main>
-        <SiteFooter locale={lang} t={t.footer} tools={tools} site={site} more={more} />
+        <SiteFooter locale={lang} t={t.footer} tools={tools} site={site} more={more} homeLabel={t.nav.tool} />
         <SiteEffects backToTop={site.backToTop} />
         <ConsentAnalytics
           gaId={siteConfig.gaId}

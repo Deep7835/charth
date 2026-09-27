@@ -21,6 +21,17 @@ export function Logo() {
   );
 }
 
+/** "HeightCompareChart" → bold first word, regular rest (shared by header and footer). */
+export function Wordmark({ className = "" }: { className?: string }) {
+  const [first, ...rest] = siteConfig.name.split(/(?=[A-Z])/);
+  return (
+    <span className={`tracking-tight text-slate-900 ${className}`}>
+      <span className="font-bold">{first}</span>
+      <span className="font-normal">{rest.join("")}</span>
+    </span>
+  );
+}
+
 type Props = { locale: Locale; t: Messages["nav"]; site: SiteMessages; tools: ToolsMessages; more: MoreMessages; boardDefaultName: string };
 
 export function SiteHeader({ locale, t, site, tools, more, boardDefaultName }: Props) {
@@ -38,9 +49,9 @@ export function SiteHeader({ locale, t, site, tools, more, boardDefaultName }: P
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4">
-        <Link href={`/${locale}`} className="flex shrink-0 items-center gap-2 font-bold tracking-tight text-slate-900">
+        <Link href={`/${locale}`} className="flex shrink-0 items-center gap-2">
           <Logo />
-          <span className="hidden min-[380px]:inline">{siteConfig.name}</span>
+          <Wordmark className="hidden text-lg min-[380px]:inline" />
         </Link>
         <nav className="flex items-center gap-1.5 sm:gap-2" aria-label={site.menu}>
           <Link href={`/${locale}`} className="hidden rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-100 lg:block">

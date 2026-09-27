@@ -51,7 +51,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       </section>
 
       <div className="mx-auto flex max-w-5xl flex-col gap-14 px-4 pt-8">
-        <section>
+        <section id="how-it-works" className="scroll-mt-20">
           <h2 className="mb-5 text-2xl font-bold tracking-tight">{h.howTitle}</h2>
           <ol className="grid gap-4 sm:grid-cols-3">
             {h.how.map((step, i) => (
@@ -114,7 +114,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           </Link>
         </section>
 
-        <section>
+        <section id="faq" className="scroll-mt-20">
           <h2 className="mb-5 text-2xl font-bold tracking-tight">{h.faqTitle}</h2>
           <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200">
             {h.faq.map((item) => (
