@@ -58,7 +58,7 @@ Strategy (from the Sept 2026 competitor research):
 
 ## Phase 5 — Launch & growth
 
-- [ ] Pick brand + domain; set `NEXT_PUBLIC_SITE_URL`
+- [x] Brand + domain: HeightCompareChart — heightcomparechart.com (register it)
 - [ ] Deploy (Vercel or Cloudflare Workers via OpenNext)
 - [ ] Google Search Console + Bing Webmaster, submit sitemap per locale
 - [ ] Analytics (GA4 / Plausible), AdSense after content depth, optional Pro tier
