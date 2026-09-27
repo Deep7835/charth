@@ -1,0 +1,34 @@
+import type { SiteMessages } from "./en";
+
+const messages: SiteMessages = {
+  menu: "Menü",
+  close: "Kapat",
+  search: "Ara",
+  searchPlaceholder: "Araç, kişi, hayvan arayın…",
+  searchEmpty: "Sonuç yok",
+  searchPages: "Sayfalar ve araçlar",
+  searchLibrary: "Grafikte karşılaştır",
+  backToTop: "Başa dön",
+  notFoundTitle: "Sayfa bulunamadı",
+  notFoundBody: "Aradığınız sayfa mevcut değil veya taşınmış.",
+  notFoundCta: "Boy karşılaştırma aracına git",
+  lastUpdated: "Son güncelleme: {date}",
+  cookieText:
+    "Siteyi geliştirmek amacıyla anonim analiz için çerezler kullanıyoruz. Zorunlu olmayan çerezleri istediğiniz zaman kabul edebilir veya reddedebilirsiniz.",
+  cookieAccept: "Kabul et",
+  cookieDecline: "Reddet",
+  cookieSettings: "Çerez ayarları",
+  privacy: "Gizlilik Politikası",
+  terms: "Kullanım Koşulları",
+  contact: "İletişim",
+  confirmResetTitle: "Grafik sıfırlansın mı?",
+  confirmResetBody: "Bu işlem tüm öğeleri kaldırır ve varsayılan grafiği geri yükler. Mevcut grafiğiniz kurtarılamaz.",
+  confirmReset: "Grafiği sıfırla",
+  cancel: "İptal",
+  copy: "Kopyala",
+  copied: "Kopyalandı",
+  copyFailed: "Kopyalanamadı. Metni seçip elle kopyalayın.",
+  invalidHeight: "0’dan büyük bir boy girin.",
+};
+
+export default messages;

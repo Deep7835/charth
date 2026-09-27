@@ -36,9 +36,10 @@ const input =
   "w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-lg font-semibold tabular-nums outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100";
 const label = "mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500";
 
-export function HeightConverter({ t }: { t: ToolsMessages["converter"] }) {
+export function HeightConverter({ t, copy }: { t: ToolsMessages["converter"]; copy: { copy: string; copied: string; copyFailed: string } }) {
   const [cm, setCm] = useState<number | null>(175);
   const [texts, setTexts] = useState<Texts>(() => textsFromCm(175) as Texts);
+  const [copyState, setCopyState] = useState<"idle" | "done" | "failed">("idle");
 
   const onChange = (field: Field, value: string) => {
     const next = { ...texts, [field]: value };
@@ -92,16 +93,42 @@ export function HeightConverter({ t }: { t: ToolsMessages["converter"] }) {
           <input id="conv-in" className={input} inputMode="decimal" value={texts.totalIn} onChange={(e) => onChange("totalIn", e.target.value)} />
         </div>
       </div>
-      <p className="mt-5 rounded-2xl bg-white px-4 py-3 text-center text-lg font-semibold text-slate-900" aria-live="polite">
-        {cm ? (
-          <>
-            {fmt(t.result, { cm: `${Number(cm.toFixed(1))} cm`, ftin: exact })}{" "}
-            <span className="text-blue-700">≈ {formatImperial(cm)}</span>
-          </>
-        ) : (
-          "—"
+      <div className="mt-5 flex items-center gap-3 rounded-2xl bg-white px-4 py-3">
+        <p className="flex-1 text-center text-lg font-semibold text-slate-900" aria-live="polite">
+          {cm ? (
+            <>
+              {fmt(t.result, { cm: `${Number(cm.toFixed(1))} cm`, ftin: exact })}{" "}
+              <bdi dir="ltr" className="text-blue-700">
+                ≈ {formatImperial(cm)}
+              </bdi>
+            </>
+          ) : (
+            "—"
+          )}
+        </p>
+        {cm && (
+          <button
+            type="button"
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(`${Number(cm.toFixed(1))} cm = ${exact} (${formatImperial(cm)})`);
+                setCopyState("done");
+              } catch {
+                setCopyState("failed");
+              }
+              setTimeout(() => setCopyState("idle"), 1800);
+            }}
+            className="shrink-0 rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            {copyState === "done" ? `✓ ${copy.copied}` : copy.copy}
+          </button>
         )}
-      </p>
+      </div>
+      {copyState === "failed" && (
+        <p role="alert" className="mt-2 text-center text-sm text-red-600">
+          {copy.copyFailed}
+        </p>
+      )}
     </div>
   );
 }

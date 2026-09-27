@@ -143,7 +143,7 @@ export const BoardCanvas = forwardRef<SVGSVGElement, Props>(function BoardCanvas
   if (!board || width === 0) {
     return (
       <svg ref={setRefs} width={width} height={height} role="img" aria-label={title} className="block" direction="ltr">
-        <text x={width / 2} y={height / 2} textAnchor="middle" className="fill-slate-400" fontSize={15}>
+        <text x={width / 2} y={height / 2} textAnchor="middle" className="fill-slate-500" fontSize={15}>
           {emptyText}
         </text>
       </svg>

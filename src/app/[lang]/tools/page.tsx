@@ -30,7 +30,7 @@ export default async function ToolsHub({ params }: PageProps<"/[lang]/tools">) {
       <RelatedTools locale={lang} t={t} title={t.common.hubH1} />
       <section className="mt-10 rounded-3xl bg-blue-600 px-6 py-8 text-white">
         <h2 className="text-xl font-bold">{t.common.boardCta}</h2>
-        <p className="mt-1 text-blue-100">{t.common.boardCtaBody}</p>
+        <p className="mt-1 text-blue-50">{t.common.boardCtaBody}</p>
         <Link href={`/${lang}`} className="mt-4 inline-block rounded-xl bg-white px-5 py-2.5 font-semibold text-blue-700 hover:bg-blue-50">
           {t.common.openInBoard} →
         </Link>

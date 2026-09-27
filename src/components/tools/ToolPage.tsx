@@ -4,6 +4,9 @@ import { absoluteUrl, siteConfig } from "@/config/site";
 import { toolIcons, toolPath, toolSlugs, type ToolSlug } from "@/config/tools";
 import type { Locale } from "@/i18n/config";
 import type { ToolsMessages } from "@/i18n/tools";
+import { getSiteMessages } from "@/i18n/site";
+import { formatDate } from "@/components/layout/LegalPage";
+import { fmt } from "@/lib/fmt";
 import { faqSchema, jsonLd, webAppSchema } from "@/lib/seo";
 
 type Props = {
@@ -19,8 +22,9 @@ type Props = {
   content?: ReactNode;
 };
 
-export function ToolPage({ locale, slug, t, h1, intro, description, faq, children, content }: Props) {
+export async function ToolPage({ locale, slug, t, h1, intro, description, faq, children, content }: Props) {
   const c = t.common;
+  const site = await getSiteMessages(locale);
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -36,7 +40,7 @@ export function ToolPage({ locale, slug, t, h1, intro, description, faq, childre
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd([
-          webAppSchema({ locale, name: `${t.names[slug].name} – ${siteConfig.name}`, description, path: toolPath(slug) }),
+          { ...webAppSchema({ locale, name: `${t.names[slug].name} – ${siteConfig.name}`, description, path: toolPath(slug) }), dateModified: siteConfig.contentUpdated },
           faqSchema(faq),
           breadcrumb,
         ])}
@@ -66,6 +70,10 @@ export function ToolPage({ locale, slug, t, h1, intro, description, faq, childre
 
         {content && <div className="prose-section mt-12 flex flex-col gap-10">{content}</div>}
 
+        <p className="mt-8 text-sm text-slate-500">
+          <time dateTime={siteConfig.contentUpdated}>{fmt(site.lastUpdated, { date: formatDate(siteConfig.contentUpdated, locale) })}</time>
+        </p>
+
         <section className="mt-12">
           <h2 className="mb-4 text-xl font-bold tracking-tight">{c.faqTitle}</h2>
           <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200">
@@ -83,10 +91,10 @@ export function ToolPage({ locale, slug, t, h1, intro, description, faq, childre
           </div>
         </section>
 
-        <section className="mt-12 rounded-3xl bg-blue-600 px-6 py-8 text-white sm:flex sm:items-center sm:justify-between sm:gap-6">
+        <section className="no-print mt-12 rounded-3xl bg-blue-600 px-6 py-8 text-white sm:flex sm:items-center sm:justify-between sm:gap-6">
           <div>
             <h2 className="text-xl font-bold">{c.boardCta}</h2>
-            <p className="mt-1 text-blue-100">{c.boardCtaBody}</p>
+            <p className="mt-1 text-blue-50">{c.boardCtaBody}</p>
           </div>
           <Link
             href={`/${locale}`}

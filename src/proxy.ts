@@ -24,8 +24,13 @@ function preferredLocale(header: string | null): Locale {
 /** Send locale-less URLs to the visitor's language; crawlers without a header get English. */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const hasLocale = locales.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
-  if (hasLocale) return;
+  const current = locales.find((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
+  if (current) {
+    // Lets the localized 404 page know which language it is rendering for.
+    const headers = new Headers(request.headers);
+    headers.set("x-locale", current);
+    return NextResponse.next({ request: { headers } });
+  }
   const url = request.nextUrl.clone();
   url.pathname = `/${preferredLocale(request.headers.get("accept-language"))}${pathname === "/" ? "" : pathname}`;
   return NextResponse.redirect(url);

@@ -1,11 +1,11 @@
 "use client";
 
-import { ContactShadows, Grid, Html, OrbitControls } from "@react-three/drei";
-import { Canvas, useThree, type ThreeEvent } from "@react-three/fiber";
-import { useEffect, useMemo } from "react";
+import { ContactShadows, Grid, OrbitControls } from "@react-three/drei";
+import { Canvas, useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
+import { useEffect, useMemo, useRef, type RefObject } from "react";
 import * as THREE from "three";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
-import { formatHeight, niceStep, type Unit } from "@/lib/units";
+import { formatHeight, niceImperialStep, niceStep, type Unit } from "@/lib/units";
 import { shapeFor } from "./BoardCanvas";
 import { headsForHeight, type Build, type Gender } from "./figures";
 import { isAnimalKind } from "./animals";
@@ -210,8 +210,34 @@ function ImagePlane({ subject }: { subject: Subject }) {
 // ------------------------------------------------------------------- scene
 
 const FOV = 35;
-const tickStyle = { pointerEvents: "none", transform: "translate(-100%, -50%)" } as const;
-const labelStyle = { pointerEvents: "none" } as const;
+
+/** A label anchored to a point in the scene; `align` is how the element hangs off that point. */
+type Anchor = { key: string; at: [number, number, number]; align: "left" | "above" };
+
+/**
+ * Keeps the HTML label layer in sync with the camera. Labels live in one plain
+ * DOM overlay outside the R3F tree (no per-label React roots, unlike drei's
+ * <Html>), and this moves them each rendered frame by writing transforms directly.
+ */
+function LabelProjector({ anchors, overlay }: { anchors: Anchor[]; overlay: RefObject<HTMLDivElement | null> }) {
+  const v = useMemo(() => new THREE.Vector3(), []);
+  useFrame(({ camera, size }) => {
+    const root = overlay.current;
+    if (!root) return;
+    for (const a of anchors) {
+      const el = root.querySelector<HTMLElement>(`[data-anchor="${CSS.escape(a.key)}"]`);
+      if (!el) continue;
+      v.set(...a.at).project(camera);
+      const hidden = v.z > 1 || v.z < -1;
+      const x = ((v.x + 1) / 2) * size.width;
+      const y = ((1 - v.y) / 2) * size.height;
+      const shift = a.align === "left" ? "translate(calc(-100% - 6px), -50%)" : "translate(-50%, calc(-100% - 4px))";
+      el.style.transform = `translate(${x}px, ${y}px) ${shift}`;
+      el.style.visibility = hidden ? "hidden" : "visible";
+    }
+  });
+  return null;
+}
 
 /** Frames the whole row (plus the measuring pole) for the canvas's current aspect ratio. */
 function CameraRig({ minX, maxX, maxH }: { minX: number; maxX: number; maxH: number }) {
@@ -239,6 +265,7 @@ function CameraRig({ minX, maxX, maxH }: { minX: number; maxX: number; maxH: num
 }
 
 export default function Board3D({ subjects, unit, selectedId, onSelect, onCanvas }: Props) {
+  const overlay = useRef<HTMLDivElement>(null);
   const layout = useMemo(() => {
     const maxH = Math.max(...subjects.map((s) => s.heightCm), 1) * M;
     const gap = maxH * 0.12;
@@ -249,91 +276,136 @@ export default function Board3D({ subjects, unit, selectedId, onSelect, onCanvas
       xs.push(cursor + widths[i] / 2);
       cursor += widths[i] + gap;
     }
-    const step = niceStep(maxH / M, 6) * M;
+    // Ruler ticks in round numbers of the chosen unit (25 cm, or 1 ft, …).
+    const step = (unit === "cm" ? niceStep(maxH / M, 6) : niceImperialStep(maxH / M, 6)) * M;
     // Rough scene size for lights, grid fade and zoom limits.
     const distance = Math.max(maxH * 2.2, rowW * 1.3);
     return { maxH, xs, rowW, distance, step };
-  }, [subjects]);
+  }, [subjects, unit]);
 
   const rulerX = -layout.rowW / 2 - layout.maxH * 0.18;
-  const ticks = Array.from({ length: Math.floor((layout.maxH * 1.05) / layout.step) + 1 }, (_, i) => i * layout.step);
+  const ticks = useMemo(
+    () => Array.from({ length: Math.floor((layout.maxH * 1.05) / layout.step) + 1 }, (_, i) => i * layout.step),
+    [layout],
+  );
+
+  const anchors = useMemo<Anchor[]>(
+    () => [
+      ...ticks.map((v, i) => ({ key: `tick-${i}`, at: [rulerX - layout.maxH * 0.03, v, 0] as [number, number, number], align: "left" as const })),
+      ...subjects.map((s, i) => ({
+        key: `label-${s.id}`,
+        at: [layout.xs[i], s.heightCm * M + layout.maxH * 0.02, 0] as [number, number, number],
+        align: "above" as const,
+      })),
+    ],
+    [ticks, subjects, layout, rulerX],
+  );
 
   return (
-    <Canvas
-      shadows
-      frameloop="demand"
-      dpr={[1, 2]}
-      camera={{ fov: FOV, position: [0, layout.maxH, layout.distance] }}
-      gl={{ antialias: true, preserveDrawingBuffer: true }}
-      onCreated={({ gl }) => onCanvas?.(gl.domElement)}
-      onPointerMissed={() => undefined}
-    >
-      <color attach="background" args={["#f8fafc"]} />
-      <hemisphereLight args={["#ffffff", "#cbd5e1", 1.1]} />
-      <directionalLight
-        position={[layout.maxH * 1.5, layout.maxH * 3, layout.maxH * 2]}
-        intensity={1.5}
-        castShadow
-        shadow-mapSize={[1024, 1024]}
-      />
-      <OrbitControls makeDefault enableDamping={false} maxPolarAngle={Math.PI * 0.49} minDistance={layout.maxH * 0.3} maxDistance={layout.distance * 4} />
-      <CameraRig minX={rulerX - layout.maxH * 0.22} maxX={layout.rowW / 2} maxH={layout.maxH} />
+    <div className="relative h-full w-full overflow-hidden">
+      <Canvas
+        shadows
+        frameloop="demand"
+        dpr={[1, 2]}
+        camera={{ fov: FOV, position: [0, layout.maxH, layout.distance] }}
+        gl={{ antialias: true, preserveDrawingBuffer: true }}
+        onCreated={({ gl }) => onCanvas?.(gl.domElement)}
+      >
+        <color attach="background" args={["#f8fafc"]} />
+        <hemisphereLight args={["#ffffff", "#cbd5e1", 1.1]} />
+        <directionalLight
+          position={[layout.maxH * 1.5, layout.maxH * 3, layout.maxH * 2]}
+          intensity={1.5}
+          castShadow
+          shadow-mapSize={[1024, 1024]}
+        />
+        <OrbitControls
+          makeDefault
+          enableDamping={false}
+          maxPolarAngle={Math.PI * 0.49}
+          minDistance={layout.maxH * 0.3}
+          maxDistance={layout.distance * 4}
+        />
+        <CameraRig minX={rulerX - layout.maxH * 0.22} maxX={layout.rowW / 2} maxH={layout.maxH} />
+        <LabelProjector anchors={anchors} overlay={overlay} />
 
-      <Grid
-        infiniteGrid
-        cellSize={layout.step / 5}
-        sectionSize={layout.step}
-        cellColor="#e2e8f0"
-        sectionColor="#cbd5e1"
-        fadeDistance={layout.distance * 3}
-        fadeStrength={1.5}
-        position={[0, -0.0005, 0]}
-      />
-      <ContactShadows position={[0, 0.0005, 0]} scale={Math.max(layout.rowW, layout.maxH) * 2} far={layout.maxH} blur={2.2} opacity={0.35} resolution={512} />
+        <Grid
+          infiniteGrid
+          cellSize={layout.step / 5}
+          sectionSize={layout.step}
+          cellColor="#e2e8f0"
+          sectionColor="#cbd5e1"
+          fadeDistance={layout.distance * 3}
+          fadeStrength={1.5}
+          position={[0, -0.0005, 0]}
+        />
+        <ContactShadows
+          position={[0, 0.0005, 0]}
+          scale={Math.max(layout.rowW, layout.maxH) * 2}
+          far={layout.maxH}
+          blur={2.2}
+          opacity={0.35}
+          resolution={512}
+        />
 
-      {/* Measuring pole */}
-      <mesh position={[rulerX, (layout.maxH * 1.05) / 2, 0]}>
-        <boxGeometry args={[layout.maxH * 0.006, layout.maxH * 1.05, layout.maxH * 0.006]} />
-        <meshStandardMaterial color="#94a3b8" />
-      </mesh>
-      {ticks.map((v) => (
-        <group key={v} position={[rulerX, v, 0]}>
-          <mesh>
+        {/* Measuring pole */}
+        <mesh position={[rulerX, (layout.maxH * 1.05) / 2, 0]}>
+          <boxGeometry args={[layout.maxH * 0.006, layout.maxH * 1.05, layout.maxH * 0.006]} />
+          <meshStandardMaterial color="#94a3b8" />
+        </mesh>
+        {ticks.map((v, i) => (
+          <mesh key={i} position={[rulerX, v, 0]}>
             <boxGeometry args={[layout.maxH * 0.04, layout.maxH * 0.003, layout.maxH * 0.003]} />
             <meshStandardMaterial color="#94a3b8" />
           </mesh>
-          <Html position={[-layout.maxH * 0.03, 0, 0]} style={tickStyle}>
-            <span className="whitespace-nowrap text-[11px] font-medium text-slate-500">{formatHeight(v / M, unit)}</span>
-          </Html>
-        </group>
-      ))}
+        ))}
 
-      {subjects.map((s, i) => {
-        const selected = s.id === selectedId;
-        const onClick = (e: ThreeEvent<MouseEvent>) => {
-          e.stopPropagation();
-          onSelect(s.id);
-        };
-        return (
-          <group key={s.id} position={[layout.xs[i], 0, 0]} onClick={onClick}>
-            {s.kind === "male" || s.kind === "female" ? (
-              <Mannequin heightCm={s.heightCm} gender={s.kind} build={s.build} adult={s.adult} color={s.color} selected={selected} />
-            ) : s.kind === "image" && s.image ? (
-              <ImagePlane subject={s} />
-            ) : (
-              <Extruded subject={s} selected={selected} />
-            )}
-            <Html position={[0, s.heightCm * M + layout.maxH * 0.03, 0]} center style={labelStyle}>
-              <div className="whitespace-nowrap rounded-md bg-white/85 px-1.5 py-0.5 text-center leading-tight shadow-sm">
-                <div className="text-[11px] font-bold text-slate-900">{s.name}</div>
-                <div className="text-[11px] font-semibold" style={{ color: s.color }}>
-                  {formatHeight(s.heightCm, unit)}
-                </div>
-              </div>
-            </Html>
-          </group>
-        );
-      })}
-    </Canvas>
+        {subjects.map((s, i) => {
+          const selected = s.id === selectedId;
+          const onClick = (e: ThreeEvent<MouseEvent>) => {
+            e.stopPropagation();
+            onSelect(s.id);
+          };
+          return (
+            <group key={s.id} position={[layout.xs[i], 0, 0]} onClick={onClick}>
+              {s.kind === "male" || s.kind === "female" ? (
+                <Mannequin heightCm={s.heightCm} gender={s.kind} build={s.build} adult={s.adult} color={s.color} selected={selected} />
+              ) : s.kind === "image" && s.image ? (
+                <ImagePlane subject={s} />
+              ) : (
+                <Extruded subject={s} selected={selected} />
+              )}
+            </group>
+          );
+        })}
+      </Canvas>
+
+      {/* Label layer: positioned every frame by <LabelProjector>. Starts hidden until projected. */}
+      <div ref={overlay} className="pointer-events-none absolute inset-0" aria-hidden>
+        {ticks.map((v, i) => (
+          <span
+            key={`tick-${i}`}
+            data-anchor={`tick-${i}`}
+            className="absolute left-0 top-0 whitespace-nowrap text-[11px] font-medium text-slate-500"
+            style={{ visibility: "hidden" }}
+          >
+            {formatHeight(v / M, unit)}
+          </span>
+        ))}
+        {subjects.map((s) => (
+          <div
+            key={`label-${s.id}`}
+            data-anchor={`label-${s.id}`}
+            className="absolute left-0 top-0 whitespace-nowrap rounded-md bg-white/85 px-1.5 py-0.5 text-center leading-tight shadow-sm"
+            style={{ visibility: "hidden" }}
+          >
+            <div className="text-[11px] font-bold text-slate-900">{s.name}</div>
+            <div className="text-[11px] font-semibold" style={{ color: s.color }}>
+              {formatHeight(s.heightCm, unit)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

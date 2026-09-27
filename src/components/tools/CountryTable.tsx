@@ -80,13 +80,15 @@ export function CountryTable({ rows, t, common, locale }: { rows: CountryRow[]; 
               {header("male", common.men)}
               {header("female", common.women)}
               <th className="px-3 py-2.5 text-start text-xs font-semibold uppercase tracking-wide text-slate-500">{t.change}</th>
-              <th className="px-3 py-2.5" />
+              <th className="px-3 py-2.5">
+                <span className="sr-only">{t.compare}</span>
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
             {visible.map((r) => (
               <tr key={r.code} className="hover:bg-slate-50/70">
-                <td className="px-3 py-2 tabular-nums text-slate-400">{sort === "female" ? ranks.female.get(r.code) : ranks.male.get(r.code)}</td>
+                <td className="px-3 py-2 tabular-nums text-slate-500">{sort === "female" ? ranks.female.get(r.code) : ranks.male.get(r.code)}</td>
                 <td className="px-3 py-2 font-medium text-slate-900">
                   <span aria-hidden className="me-2">
                     {flag(r.code)}

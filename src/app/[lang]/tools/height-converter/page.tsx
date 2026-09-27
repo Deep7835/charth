@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { toolPath } from "@/config/tools";
 import { hasLocale } from "@/i18n/config";
 import { getToolsMessages } from "@/i18n/tools";
+import { getSiteMessages } from "@/i18n/site";
 import { HeightConverter } from "@/components/tools/HeightConverter";
 import { ContentSection, ToolPage } from "@/components/tools/ToolPage";
 import { pageMetadata } from "@/lib/seo";
@@ -23,7 +24,7 @@ const ftRows = Array.from({ length: 31 }, (_, i) => 54 + i); // 4′6″ … 7�
 export default async function Page({ params }: PageProps<"/[lang]/tools/height-converter">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
-  const t = await getToolsMessages(lang);
+  const [t, site] = await Promise.all([getToolsMessages(lang), getSiteMessages(lang)]);
   const c = t.converter;
 
   const th = "px-3 py-2 text-start text-xs font-semibold uppercase tracking-wide text-slate-500";
@@ -92,7 +93,7 @@ export default async function Page({ params }: PageProps<"/[lang]/tools/height-c
         </>
       }
     >
-      <HeightConverter t={c} />
+      <HeightConverter t={c} copy={{ copy: site.copy, copied: site.copied, copyFailed: site.copyFailed }} />
     </ToolPage>
   );
 }

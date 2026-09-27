@@ -4,6 +4,8 @@ import { siteConfig } from "@/config/site";
 import { hasLocale, localeMeta, type Locale } from "@/i18n/config";
 import { getMessages } from "@/i18n/messages";
 import { getToolsMessages } from "@/i18n/tools";
+import { getSiteMessages } from "@/i18n/site";
+import { boardUi } from "@/lib/boardUi";
 import { RelatedTools } from "@/components/tools/ToolPage";
 import { HeightBoard } from "@/components/board/HeightBoard";
 import { faqSchema, jsonLd, pageMetadata, webAppSchema } from "@/lib/seo";
@@ -19,7 +21,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const locale: Locale = lang;
-  const [t, tools] = await Promise.all([getMessages(locale), getToolsMessages(locale)]);
+  const [t, tools, site] = await Promise.all([getMessages(locale), getToolsMessages(locale), getSiteMessages(locale)]);
   const h = t.home;
 
   return (
@@ -37,7 +39,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">{h.h1}</h1>
           <p className="max-w-3xl text-sm text-slate-600 sm:text-base">{h.tagline}</p>
         </div>
-        <HeightBoard locale={locale} t={t.board} defaultUnit={localeMeta[locale].imperial ? "ft" : "cm"} brand={siteConfig.name} />
+        <HeightBoard locale={locale} ui={boardUi(site)} t={t.board} defaultUnit={localeMeta[locale].imperial ? "ft" : "cm"} brand={siteConfig.name} />
       </section>
 
       <div className="mx-auto flex max-w-5xl flex-col gap-14 px-4 pt-8">
@@ -101,7 +103,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
         <section className="rounded-3xl bg-blue-600 px-6 py-10 text-center text-white">
           <h2 className="mb-2 text-2xl font-bold">{h.ctaTitle}</h2>
-          <p className="mb-5 text-blue-100">{h.ctaBody}</p>
+          <p className="mb-5 text-blue-50">{h.ctaBody}</p>
           <a href="#tool" className="inline-block rounded-xl bg-white px-5 py-2.5 font-semibold text-blue-700 hover:bg-blue-50">
             {h.ctaButton}
           </a>

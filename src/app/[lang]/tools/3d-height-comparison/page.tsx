@@ -6,6 +6,8 @@ import { hasLocale, localeMeta } from "@/i18n/config";
 import { getMessages } from "@/i18n/messages";
 import { getThreeMessages } from "@/i18n/three";
 import { getToolsMessages } from "@/i18n/tools";
+import { getSiteMessages } from "@/i18n/site";
+import { boardUi } from "@/lib/boardUi";
 import { HeightBoard } from "@/components/board/HeightBoard";
 import { ContentSection, ToolPage } from "@/components/tools/ToolPage";
 import { pageMetadata } from "@/lib/seo";
@@ -22,7 +24,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/tools/3d-h
 export default async function Page({ params }: PageProps<"/[lang]/tools/3d-height-comparison">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
-  const [tools, t, m] = await Promise.all([getToolsMessages(lang), getThreeMessages(lang), getMessages(lang)]);
+  const [tools, t, m, site] = await Promise.all([getToolsMessages(lang), getThreeMessages(lang), getMessages(lang), getSiteMessages(lang)]);
   return (
     <ToolPage
       locale={lang}
@@ -36,6 +38,7 @@ export default async function Page({ params }: PageProps<"/[lang]/tools/3d-heigh
     >
       <HeightBoard
         locale={lang}
+        ui={boardUi(site)}
         t={m.board}
         defaultUnit={localeMeta[lang].imperial ? "ft" : "cm"}
         brand={siteConfig.name}

@@ -24,3 +24,88 @@ body {
     "Noto Sans JP",
     sans-serif;
 }
+
+/* ---- Keyboard focus: always visible, never on mouse click ---- */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---- Reading progress bar (scroll-driven, no JS; hidden where unsupported) ---- */
+.scroll-progress {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: 2px;
+    background: #2563eb;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: scroll-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+  [dir="rtl"] .scroll-progress {
+    transform-origin: right;
+  }
+}
+@keyframes scroll-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Print: keep the content, drop the chrome ---- */
+@media print {
+  header,
+  footer,
+  nav[aria-label="Breadcrumb"],
+  .no-print,
+  [role="status"] {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  details {
+    display: block;
+  }
+  details > :not(summary) {
+    display: block !important;
+  }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+  }
+  table,
+  tr,
+  img,
+  svg {
+    break-inside: avoid;
+  }
+  .shadow-sm,
+  .shadow-lg {
+    box-shadow: none !important;
+  }
+}

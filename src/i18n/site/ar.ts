@@ -1,0 +1,34 @@
+import type { SiteMessages } from "./en";
+
+const messages: SiteMessages = {
+  menu: "القائمة",
+  close: "إغلاق",
+  search: "بحث",
+  searchPlaceholder: "ابحث عن أدوات وأشخاص وحيوانات…",
+  searchEmpty: "لا توجد نتائج",
+  searchPages: "الصفحات والأدوات",
+  searchLibrary: "قارن على المخطط",
+  backToTop: "العودة إلى الأعلى",
+  notFoundTitle: "الصفحة غير موجودة",
+  notFoundBody: "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+  notFoundCta: "انتقل إلى أداة مقارنة الطول",
+  lastUpdated: "آخر تحديث: {date}",
+  cookieText:
+    "نستخدم ملفات تعريف الارتباط لتحليلات مجهولة الهوية بهدف تحسين الموقع. يمكنك قبول ملفات تعريف الارتباط غير الضرورية أو رفضها في أي وقت.",
+  cookieAccept: "قبول",
+  cookieDecline: "رفض",
+  cookieSettings: "إعدادات ملفات تعريف الارتباط",
+  privacy: "سياسة الخصوصية",
+  terms: "شروط الخدمة",
+  contact: "اتصل بنا",
+  confirmResetTitle: "هل تريد إعادة تعيين المخطط؟",
+  confirmResetBody: "سيؤدي هذا إلى إزالة جميع العناصر واستعادة المخطط الافتراضي. لا يمكن استرجاع مخططك الحالي.",
+  confirmReset: "إعادة تعيين",
+  cancel: "إلغاء",
+  copy: "نسخ",
+  copied: "تم النسخ",
+  copyFailed: "تعذّر النسخ. حدّد النص وانسخه يدويًا.",
+  invalidHeight: "أدخل طولًا أكبر من 0.",
+};
+
+export default messages;

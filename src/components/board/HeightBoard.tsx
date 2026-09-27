@@ -17,10 +17,27 @@ import { palette, type Subject, type SubjectKind } from "./types";
 import { useElementSize } from "./useElementSize";
 
 // Three.js only loads when someone switches to 3D.
-const Board3D = dynamic(() => import("./Board3D"), { ssr: false });
+const Board3D = dynamic(() => import("./Board3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full items-center justify-center" role="progressbar" aria-busy="true">
+      <span className="h-9 w-9 animate-spin rounded-full border-[3px] border-slate-200 border-t-blue-600" />
+    </div>
+  ),
+});
+
+export type BoardUi = {
+  confirmResetTitle: string;
+  confirmResetBody: string;
+  confirmReset: string;
+  cancel: string;
+  invalidHeight: string;
+  copyFailed: string;
+};
 
 type Props = {
   locale: string;
+  ui: BoardUi;
   /** Start in the 3D view (used by the 3D landing page). */
   initialMode?: "2d" | "3d";
   t: Messages["board"];
@@ -43,7 +60,7 @@ function defaultSubjects(t: Messages["board"]): Subject[] {
 const btn =
   "inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 active:scale-[0.98]";
 
-export function HeightBoard({ locale, t, defaultUnit, brand, initialSubjects, initialMode = "2d" }: Props) {
+export function HeightBoard({ locale, ui, t, defaultUnit, brand, initialSubjects, initialMode = "2d" }: Props) {
   const initial = useMemo(
     () => (initialSubjects?.length ? initialSubjects.map((s) => ({ ...s, id: newId() })) : defaultSubjects(t)),
     [initialSubjects, t],
@@ -55,6 +72,7 @@ export function HeightBoard({ locale, t, defaultUnit, brand, initialSubjects, in
   const [view, setView] = useState<"fit" | "focus">("fit");
   const [mode, setMode] = useState<"2d" | "3d">(initialMode);
   const canvas3d = useRef<HTMLCanvasElement | null>(null);
+  const resetDialog = useRef<HTMLDialogElement>(null);
   // Bumped after a drag so the editor's height field re-reads the new value.
   const [resizeNonce, setResizeNonce] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
@@ -86,6 +104,15 @@ export function HeightBoard({ locale, t, defaultUnit, brand, initialSubjects, in
     url.searchParams.set("u", unit);
     return url.toString();
   }, [subjects, unit]);
+
+  /** Share links carry UTM tags so analytics can attribute visits from shared charts. */
+  const trackedShareUrl = (medium: "native" | "copy") => {
+    const url = new URL(shareUrl());
+    url.searchParams.set("utm_source", "share");
+    url.searchParams.set("utm_medium", medium);
+    url.searchParams.set("utm_campaign", "chart");
+    return url.toString();
+  };
 
   // Keep the address bar in sync so a refresh keeps the chart; untouched defaults keep a clean URL.
   const pristine = useRef(encodeSubjects(initial));
@@ -163,17 +190,27 @@ export function HeightBoard({ locale, t, defaultUnit, brand, initialSubjects, in
   };
 
   const share = async () => {
-    const url = shareUrl();
-    try {
-      if (navigator.share && window.matchMedia("(pointer: coarse)").matches) {
-        await navigator.share({ url, title: document.title });
-        return;
+    if (navigator.share && window.matchMedia("(pointer: coarse)").matches) {
+      try {
+        await navigator.share({ url: trackedShareUrl("native"), title: document.title });
+      } catch {
+        /* user dismissed the share sheet */
       }
-      await navigator.clipboard.writeText(url);
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(trackedShareUrl("copy"));
       setToast(t.linkCopied);
     } catch {
-      /* user dismissed the share sheet */
+      setToast(ui.copyFailed);
     }
+  };
+
+  const reset = () => {
+    const d = defaultSubjects(t);
+    setSubjects(d);
+    setSelectedId(d[0].id);
+    resetDialog.current?.close();
   };
 
   const download = () => {
@@ -290,17 +327,27 @@ export function HeightBoard({ locale, t, defaultUnit, brand, initialSubjects, in
             <button type="button" className={btn} onClick={download}>
               ⤓ {t.download}
             </button>
-            <button
-              type="button"
-              className={btn}
-              onClick={() => {
-                const d = defaultSubjects(t);
-                setSubjects(d);
-                setSelectedId(d[0].id);
-              }}
-            >
+            <button type="button" className={btn} onClick={() => resetDialog.current?.showModal()}>
               ↺ {t.reset}
             </button>
+            <dialog
+              ref={resetDialog}
+              aria-labelledby="reset-title"
+              className="m-auto w-[min(92vw,420px)] rounded-2xl border border-slate-200 bg-white p-5 text-slate-900 shadow-2xl backdrop:bg-slate-900/40"
+            >
+              <h2 id="reset-title" className="text-lg font-bold">
+                {ui.confirmResetTitle}
+              </h2>
+              <p className="mt-2 text-sm text-slate-600">{ui.confirmResetBody}</p>
+              <div className="mt-5 flex justify-end gap-2">
+                <button type="button" className={btn} onClick={() => resetDialog.current?.close()} autoFocus>
+                  {ui.cancel}
+                </button>
+                <button type="button" className="rounded-lg bg-red-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-red-700" onClick={reset}>
+                  {ui.confirmReset}
+                </button>
+              </div>
+            </dialog>
           </div>
         </div>
 
@@ -331,7 +378,7 @@ export function HeightBoard({ locale, t, defaultUnit, brand, initialSubjects, in
                 </p>
               </div>
             ) : (
-              <p className="p-6 text-center text-sm text-slate-400">{t.empty}</p>
+              <p className="p-6 text-center text-sm text-slate-500">{t.empty}</p>
             )
           ) : (
           <BoardCanvas
@@ -447,6 +494,7 @@ export function HeightBoard({ locale, t, defaultUnit, brand, initialSubjects, in
                       onDuplicate={() => add({ ...s, name: `${s.name} 2` })}
                       onMove={(d) => move(s.id, d)}
                       resizeNonce={resizeNonce}
+                      invalidHeight={ui.invalidHeight}
                     />
                   )}
                 </li>
@@ -470,6 +518,7 @@ type EditorProps = {
   onDuplicate: () => void;
   onMove: (delta: number) => void;
   resizeNonce: number;
+  invalidHeight: string;
 };
 
 const label = "text-[11px] font-semibold uppercase tracking-wide text-slate-500";
@@ -478,7 +527,7 @@ const field =
 const smallBtn =
   "rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-40";
 
-function SubjectEditor({ subject: s, unit, t, canMoveLeft, canMoveRight, onChange, onRemove, onDuplicate, onMove, resizeNonce }: EditorProps) {
+function SubjectEditor({ subject: s, unit, t, canMoveLeft, canMoveRight, onChange, onRemove, onDuplicate, onMove, resizeNonce, invalidHeight }: EditorProps) {
   const human = s.kind === "male" || s.kind === "female";
   return (
     <div className="flex flex-col gap-2.5 border-t border-slate-100 px-2.5 pb-3 pt-2.5">
@@ -494,6 +543,7 @@ function SubjectEditor({ subject: s, unit, t, canMoveLeft, canMoveRight, onChang
           unit={unit}
           onChange={(heightCm) => onChange({ heightCm })}
           labels={{ feet: t.feet, inches: t.inches, unitMetric: t.unitMetric }}
+          errorText={invalidHeight}
         />
       </div>
 

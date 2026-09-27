@@ -9,6 +9,8 @@ type Props = {
   onChange: (cm: number) => void;
   labels: { feet: string; inches: string; unitMetric: string };
   id?: string;
+  /** Shown (with a red border) while the typed value can't be used. */
+  errorText?: string;
 };
 
 const inputClass =
@@ -18,7 +20,7 @@ const inputClass =
  * Height field that accepts cm, or feet + inches, while the user types freely.
  * Callers remount it (via `key`) when the value changes from outside.
  */
-export function HeightInput({ valueCm, unit, onChange, labels, id }: Props) {
+export function HeightInput({ valueCm, unit, onChange, labels, id, errorText }: Props) {
   // Large objects are easier to edit in meters.
   const [meters] = useState(() => valueCm >= 1000);
   const factor = meters ? 100 : 1;
@@ -26,8 +28,21 @@ export function HeightInput({ valueCm, unit, onChange, labels, id }: Props) {
   const [ft, setFt] = useState(() => String(cmToFtIn(valueCm).feet));
   const [inch, setInch] = useState(() => String(cmToFtIn(valueCm).inches));
 
+  const invalid =
+    unit === "cm"
+      ? !(parseFloat(cmText) > 0)
+      : !((parseFloat(ft) || 0) * 12 + (parseFloat(inch) || 0) > 0) || (parseFloat(inch) || 0) < 0;
+  const errorId = id ? `${id}-error` : undefined;
+  const cls = `${inputClass} ${invalid ? "border-red-500 focus:border-red-500 focus:ring-red-100" : ""}`;
+  const error = invalid && errorText && (
+    <p id={errorId} role="alert" className="mt-1 text-xs font-medium text-red-600">
+      {errorText}
+    </p>
+  );
+
   if (unit === "cm") {
     return (
+      <div>
       <div className="flex items-center gap-1.5">
         <input
           id={id}
@@ -35,7 +50,9 @@ export function HeightInput({ valueCm, unit, onChange, labels, id }: Props) {
           inputMode="decimal"
           min={1}
           step="any"
-          className={inputClass}
+          className={cls}
+          aria-invalid={invalid}
+          aria-describedby={invalid ? errorId : undefined}
           value={cmText}
           onChange={(e) => {
             setCmText(e.target.value);
@@ -44,6 +61,8 @@ export function HeightInput({ valueCm, unit, onChange, labels, id }: Props) {
           }}
         />
         <span className="text-xs text-slate-500">{meters ? "m" : labels.unitMetric}</span>
+      </div>
+      {error}
       </div>
     );
   }
@@ -56,13 +75,15 @@ export function HeightInput({ valueCm, unit, onChange, labels, id }: Props) {
   };
 
   return (
+    <div>
     <div className="flex items-center gap-1.5">
       <input
         id={id}
         type="number"
         inputMode="numeric"
         min={0}
-        className={inputClass}
+        className={cls}
+        aria-invalid={invalid}
         value={ft}
         onChange={(e) => {
           setFt(e.target.value);
@@ -77,7 +98,8 @@ export function HeightInput({ valueCm, unit, onChange, labels, id }: Props) {
         min={0}
         max={11.99}
         step="any"
-        className={inputClass}
+        className={cls}
+        aria-invalid={invalid}
         value={inch}
         onChange={(e) => {
           setInch(e.target.value);
@@ -86,6 +108,8 @@ export function HeightInput({ valueCm, unit, onChange, labels, id }: Props) {
         aria-label={labels.inches}
       />
       <span className="text-xs text-slate-500">{labels.inches}</span>
+    </div>
+    {error}
     </div>
   );
 }
