@@ -5,7 +5,7 @@ const messages: LegalMessages = {
   privacy: {
     metaTitle: "Politique de confidentialité",
     metaDescription:
-      "Comment {site} traite vos données : aucun compte, les graphiques restent dans votre navigateur, et les cookies de mesure d’audience facultatifs ne sont utilisés qu’avec votre consentement.",
+      "Comment {site} traite vos données : aucun compte, les graphiques restent dans votre navigateur, et des statistiques d’utilisation anonymes avec Google Analytics.",
     h1: "Politique de confidentialité",
     intro:
       "{site} est un outil gratuit de comparaison de tailles. Nous collectons le moins de données possible. Cette politique explique ce qui est traité lorsque vous utilisez le site et quels choix s’offrent à vous.",
@@ -21,8 +21,8 @@ const messages: LegalMessages = {
       {
         h: "Cookies et stockage local",
         p: [
-          "Nous enregistrons votre préférence de thème et votre choix concernant les cookies dans le stockage local de votre navigateur. Ces éléments sont nécessaires pour que le site fonctionne comme vous vous y attendez.",
-          "Si vous acceptez les cookies de mesure d’audience, nous utilisons Google Analytics pour mesurer l’utilisation de manière anonyme, par exemple les pages consultées, le pays et le type d’appareil. Nous n’utilisons pas d’outils d’analyse sans votre consentement, et vous pouvez modifier votre choix à tout moment via « Paramètres des cookies » en pied de page.",
+          "Nous enregistrons quelques préférences techniques dans le stockage local de votre navigateur. Ces éléments sont nécessaires pour que le site fonctionne comme vous vous y attendez.",
+          "Nous utilisons Google Analytics pour mesurer l’utilisation de manière anonyme, par exemple les pages consultées, le pays et le type d’appareil. Google Analytics dépose des cookies à cette fin. Vous pouvez bloquer ou supprimer les cookies dans les paramètres de votre navigateur, ou installer le module complémentaire de navigateur de Google permettant de désactiver la mesure (tools.google.com/dlpage/gaoptout).",
           "Si nous affichons de la publicité à l’avenir, des cookies publicitaires personnalisés ne seront utilisés qu’avec votre consentement, et cette politique sera mise à jour au préalable.",
         ],
       },

@@ -4,7 +4,7 @@ const messages: LegalMessages = {
   privacy: {
     metaTitle: "Política de privacidad",
     metaDescription:
-      "Cómo {site} trata tus datos: sin cuentas, los gráficos se quedan en tu navegador y cookies de analítica opcionales solo con tu consentimiento.",
+      "Cómo {site} trata tus datos: sin cuentas, los gráficos se quedan en tu navegador y estadísticas de uso anónimas con Google Analytics.",
     h1: "Política de privacidad",
     intro:
       "{site} es una herramienta gratuita de comparación de alturas. Recopilamos la menor cantidad de datos posible. Esta política explica qué se procesa cuando usas el sitio y qué opciones tienes.",
@@ -20,8 +20,8 @@ const messages: LegalMessages = {
       {
         h: "Cookies y almacenamiento local",
         p: [
-          "Guardamos tu preferencia de tema y tu elección sobre las cookies en el almacenamiento local de tu navegador. Estos datos son necesarios para que el sitio funcione como esperas.",
-          "Si aceptas las cookies de analítica, usamos Google Analytics para medir el uso anónimo, como las páginas visitadas, el país y el tipo de dispositivo. No usamos analítica sin tu consentimiento, y puedes cambiar tu elección en cualquier momento desde “Configuración de cookies” en el pie de página.",
+          "Guardamos algunas preferencias técnicas en el almacenamiento local de tu navegador. Son necesarias para que el sitio funcione como esperas.",
+          "Usamos Google Analytics para medir el uso anónimo, como las páginas visitadas, el país y el tipo de dispositivo. Google Analytics instala cookies con este fin. Puedes bloquear o eliminar las cookies en la configuración de tu navegador, o instalar el complemento de inhabilitación para navegadores de Google (tools.google.com/dlpage/gaoptout).",
           "Si en el futuro mostramos publicidad, solo se usarán cookies de publicidad personalizada con tu consentimiento, y antes se actualizará esta política.",
         ],
       },

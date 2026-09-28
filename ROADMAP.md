@@ -38,12 +38,12 @@ Strategy (from the Sept 2026 competitor research):
 
 ## Launch checklist ✅ (42-item audit)
 
-- Legal: privacy policy + terms (14 languages), cookie consent (GA loads only after "Accept"; withdraw via footer "Cookie settings")
+- Legal: privacy policy + terms (14 languages); Google Analytics loads on every page (no consent banner, by owner decision)
 - Security: HSTS, nosniff, referrer policy, frame-ancestors, permissions policy, no `x-powered-by`; no secrets in client code
 - SEO: unique titles/descriptions verified across 140 URLs, 0 broken internal links, localized 404 (real 404 status), apple-touch icon, dateModified + "Last updated"
 - UX: mobile menu, site search (/ or ⌘K; pages + library in every language), back-to-top, CSS scroll progress, reset confirmation, input error states, copy buttons, print stylesheet
 - Accessibility: WCAG AA contrast (computed), visible focus rings, skip link, aria names; Lighthouse mobile: Perf 96–98, A11y/BP/SEO 100
-- Analytics: GA4 via `NEXT_PUBLIC_GA_ID`; share links carry `utm_source=share&utm_medium=copy|native&utm_campaign=chart`
+- Analytics: GA4 `G-ZKPKJYVS4C` on every page (override via `NEXT_PUBLIC_GA_ID`); share links carry `utm_source=share&utm_medium=copy|native&utm_campaign=chart`
 - N/A: password toggle and form spam protection (no accounts or server-side forms)
 
 ## Phase 4 — Content at scale (quality-gated)

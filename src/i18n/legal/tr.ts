@@ -3,7 +3,7 @@ import type { LegalMessages } from "./en";
 const messages: LegalMessages = {
   privacy: {
     metaTitle: "Gizlilik Politikası",
-    metaDescription: "{site} verilerinizi nasıl işler: hesap yok, grafikler tarayıcınızda kalır, isteğe bağlı analiz çerezleri yalnızca onayınızla kullanılır.",
+    metaDescription: "{site} verilerinizi nasıl işler: hesap yok, grafikler tarayıcınızda kalır, Google Analytics ile anonim kullanım istatistikleri toplanır.",
     h1: "Gizlilik Politikası",
     intro:
       "{site}, ücretsiz bir boy karşılaştırma aracıdır. Mümkün olduğunca az veri topluyoruz. Bu politika, siteyi kullandığınızda nelerin işlendiğini ve sahip olduğunuz seçenekleri açıklar.",
@@ -19,8 +19,8 @@ const messages: LegalMessages = {
       {
         h: "Çerezler ve yerel depolama",
         p: [
-          "Tema tercihinizi ve çerez seçiminizi tarayıcınızın yerel depolama alanında saklarız. Bunlar, sitenin beklediğiniz şekilde çalışması için gereklidir.",
-          "Analiz çerezlerini kabul ederseniz, ziyaret edilen sayfalar, ülke ve cihaz türü gibi anonim kullanım verilerini ölçmek için Google Analytics kullanırız. Onayınız olmadan analiz kullanmayız ve seçiminizi alt bilgideki “Çerez ayarları” bağlantısından istediğiniz zaman değiştirebilirsiniz.",
+          "Tarayıcınızın yerel depolama alanında birkaç teknik tercih saklarız. Bunlar, sitenin beklediğiniz şekilde çalışması için gereklidir.",
+          "Ziyaret edilen sayfalar, ülke ve cihaz türü gibi anonim kullanım verilerini ölçmek için Google Analytics kullanırız. Google Analytics bu amaçla çerezler yerleştirir. Çerezleri tarayıcı ayarlarınızdan engelleyebilir veya silebilir ya da Google’ın devre dışı bırakma tarayıcı eklentisini (tools.google.com/dlpage/gaoptout) yükleyebilirsiniz.",
           "Gelecekte reklam gösterirsek, kişiselleştirilmiş reklam çerezleri yalnızca onayınızla kullanılacak ve bu politika önceden güncellenecektir.",
         ],
       },

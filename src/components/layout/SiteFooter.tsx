@@ -6,7 +6,6 @@ import type { Messages } from "@/i18n/messages/en";
 import type { MoreMessages } from "@/i18n/more";
 import type { SiteMessages } from "@/i18n/site";
 import type { ToolsMessages } from "@/i18n/tools";
-import { CookieSettingsButton } from "./ConsentAnalytics";
 import { Logo, Wordmark } from "./SiteHeader";
 
 type Props = { locale: Locale; t: Messages["footer"]; tools: ToolsMessages; site: SiteMessages; more: MoreMessages; homeLabel: string };
@@ -16,7 +15,7 @@ const resourceTools: ToolSlug[] = ["average-height-by-country", "growth-chart", 
 
 export function SiteFooter({ locale, t, tools, site, more, homeLabel }: Props) {
   const l = (path: string) => `/${locale}${path}`;
-  const columns: { title: string; links: { href: string; label: string; external?: boolean }[]; extra?: React.ReactNode }[] = [
+  const columns: { title: string; links: { href: string; label: string; external?: boolean }[] }[] = [
     {
       title: site.footerProduct,
       links: [
@@ -47,7 +46,6 @@ export function SiteFooter({ locale, t, tools, site, more, homeLabel }: Props) {
         { href: l("/privacy"), label: site.privacy },
         { href: l("/terms"), label: site.terms },
       ],
-      extra: siteConfig.gaId ? <CookieSettingsButton label={site.cookieSettings} /> : null,
     },
   ];
 
@@ -80,7 +78,6 @@ export function SiteFooter({ locale, t, tools, site, more, homeLabel }: Props) {
                     )}
                   </li>
                 ))}
-                {col.extra && <li className="text-slate-500">{col.extra}</li>}
               </ul>
             </div>
           ))}

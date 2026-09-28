@@ -6,7 +6,7 @@ import { getMessages } from "@/i18n/messages";
 import { getSiteMessages } from "@/i18n/site";
 import { getMoreMessages } from "@/i18n/more";
 import { getToolsMessages } from "@/i18n/tools";
-import { ConsentAnalytics } from "@/components/layout/ConsentAnalytics";
+import { GoogleAnalytics } from "@/components/layout/GoogleAnalytics";
 import { SiteEffects } from "@/components/layout/SiteEffects";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -49,11 +49,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         <main id="main">{children}</main>
         <SiteFooter locale={lang} t={t.footer} tools={tools} site={site} more={more} homeLabel={t.nav.tool} />
         <SiteEffects backToTop={site.backToTop} />
-        <ConsentAnalytics
-          gaId={siteConfig.gaId}
-          locale={lang}
-          t={{ cookieText: site.cookieText, cookieAccept: site.cookieAccept, cookieDecline: site.cookieDecline, privacy: site.privacy }}
-        />
+        <GoogleAnalytics gaId={siteConfig.gaId} />
       </body>
     </html>
   );

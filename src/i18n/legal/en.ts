@@ -6,7 +6,7 @@
 const legal = {
   privacy: {
     metaTitle: "Privacy Policy",
-    metaDescription: "How {site} handles your data: no accounts, charts stay in your browser, optional analytics cookies only with your consent.",
+    metaDescription: "How {site} handles your data: no accounts, charts stay in your browser, and anonymous usage statistics with Google Analytics.",
     h1: "Privacy policy",
     intro:
       "{site} is a free height comparison tool. We collect as little data as possible. This policy explains what is processed when you use the site and the choices you have.",
@@ -22,8 +22,8 @@ const legal = {
       {
         h: "Cookies and local storage",
         p: [
-          "We store your theme preference and cookie choice in your browser’s local storage. These are necessary for the site to work as you expect.",
-          "If you accept analytics cookies, we use Google Analytics to measure anonymous usage such as pages visited, country and device type. We do not use analytics without your consent, and you can change your choice at any time with “Cookie settings” in the footer.",
+          "We store a few technical preferences in your browser’s local storage. These are necessary for the site to work as you expect.",
+          "We use Google Analytics to measure anonymous usage such as pages visited, country and device type. Google Analytics sets cookies for this purpose. You can block or delete cookies in your browser settings, or install Google’s opt-out browser add-on (tools.google.com/dlpage/gaoptout).",
           "If we show advertising in the future, it will only use personalised ad cookies with your consent, and this policy will be updated first.",
         ],
       },

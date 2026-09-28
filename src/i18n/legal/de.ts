@@ -4,7 +4,7 @@ const messages: LegalMessages = {
   privacy: {
     metaTitle: "Datenschutzerklärung",
     metaDescription:
-      "Wie {site} mit deinen Daten umgeht: keine Konten, Diagramme bleiben in deinem Browser, optionale Analyse-Cookies nur mit deiner Einwilligung.",
+      "Wie {site} mit deinen Daten umgeht: keine Konten, Diagramme bleiben in deinem Browser, anonyme Nutzungsstatistiken mit Google Analytics.",
     h1: "Datenschutzerklärung",
     intro:
       "{site} ist ein kostenloses Tool für Größenvergleiche. Wir erheben so wenige Daten wie möglich. Diese Erklärung beschreibt, was bei der Nutzung der Website verarbeitet wird und welche Wahlmöglichkeiten du hast.",
@@ -20,8 +20,8 @@ const messages: LegalMessages = {
       {
         h: "Cookies und lokaler Speicher",
         p: [
-          "Wir speichern deine Design-Einstellung und deine Cookie-Auswahl im lokalen Speicher deines Browsers. Diese sind erforderlich, damit die Website wie erwartet funktioniert.",
-          "Wenn du Analyse-Cookies akzeptierst, verwenden wir Google Analytics, um die Nutzung anonym zu messen, etwa besuchte Seiten, Land und Gerätetyp. Ohne deine Einwilligung setzen wir keine Analyse ein, und du kannst deine Auswahl jederzeit über „Cookie-Einstellungen“ in der Fußzeile ändern.",
+          "Wir speichern einige technische Einstellungen im lokalen Speicher deines Browsers. Diese sind erforderlich, damit die Website wie erwartet funktioniert.",
+          "Wir verwenden Google Analytics, um die Nutzung anonym zu messen, etwa besuchte Seiten, Land und Gerätetyp. Google Analytics setzt zu diesem Zweck Cookies. Du kannst Cookies in deinen Browsereinstellungen blockieren oder löschen oder das Browser-Add-on von Google zur Deaktivierung installieren (tools.google.com/dlpage/gaoptout).",
           "Falls wir künftig Werbung anzeigen, werden Cookies für personalisierte Werbung nur mit deiner Einwilligung verwendet, und diese Erklärung wird vorher aktualisiert.",
         ],
       },

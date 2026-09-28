@@ -3,7 +3,7 @@ import type { LegalMessages } from "./en";
 const messages: LegalMessages = {
   privacy: {
     metaTitle: "Chính sách quyền riêng tư",
-    metaDescription: "Cách {site} xử lý dữ liệu của bạn: không có tài khoản, biểu đồ nằm trong trình duyệt của bạn, cookie phân tích tùy chọn chỉ khi có sự đồng ý của bạn.",
+    metaDescription: "Cách {site} xử lý dữ liệu của bạn: không có tài khoản, biểu đồ nằm trong trình duyệt của bạn, và thống kê sử dụng ẩn danh bằng Google Analytics.",
     h1: "Chính sách quyền riêng tư",
     intro:
       "{site} là công cụ so sánh chiều cao miễn phí. Chúng tôi thu thập ít dữ liệu nhất có thể. Chính sách này giải thích những gì được xử lý khi bạn sử dụng trang web và các lựa chọn mà bạn có.",
@@ -19,8 +19,8 @@ const messages: LegalMessages = {
       {
         h: "Cookie và bộ nhớ cục bộ",
         p: [
-          "Chúng tôi lưu tùy chọn giao diện và lựa chọn cookie của bạn trong bộ nhớ cục bộ (local storage) của trình duyệt. Những dữ liệu này là cần thiết để trang web hoạt động như bạn mong đợi.",
-          "Nếu bạn chấp nhận cookie phân tích, chúng tôi sử dụng Google Analytics để đo lường việc sử dụng ẩn danh như các trang đã truy cập, quốc gia và loại thiết bị. Chúng tôi không sử dụng công cụ phân tích khi chưa có sự đồng ý của bạn, và bạn có thể thay đổi lựa chọn bất cứ lúc nào qua mục “Cài đặt cookie” ở chân trang.",
+          "Chúng tôi lưu một vài tùy chọn kỹ thuật trong bộ nhớ cục bộ (local storage) của trình duyệt. Những dữ liệu này là cần thiết để trang web hoạt động như bạn mong đợi.",
+          "Chúng tôi sử dụng Google Analytics để đo lường việc sử dụng ẩn danh như các trang đã truy cập, quốc gia và loại thiết bị. Google Analytics đặt cookie cho mục đích này. Bạn có thể chặn hoặc xóa cookie trong phần cài đặt của trình duyệt, hoặc cài tiện ích chọn không tham gia của Google cho trình duyệt (tools.google.com/dlpage/gaoptout).",
           "Nếu sau này chúng tôi hiển thị quảng cáo, cookie quảng cáo được cá nhân hóa sẽ chỉ được sử dụng khi có sự đồng ý của bạn, và chính sách này sẽ được cập nhật trước.",
         ],
       },

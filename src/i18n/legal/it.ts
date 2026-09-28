@@ -4,7 +4,7 @@ const messages: LegalMessages = {
   privacy: {
     metaTitle: "Informativa sulla privacy",
     metaDescription:
-      "Come {site} tratta i dati degli utenti: nessun account, i grafici restano nel browser e cookie di analisi facoltativi solo previo consenso.",
+      "Come {site} tratta i dati degli utenti: nessun account, i grafici restano nel browser e statistiche di utilizzo anonime con Google Analytics.",
     h1: "Informativa sulla privacy",
     intro:
       "{site} è uno strumento gratuito per il confronto delle altezze. Raccogliamo il minor numero possibile di dati. La presente informativa spiega quali dati vengono trattati durante l’utilizzo del sito e quali scelte sono a disposizione dell’utente.",
@@ -20,8 +20,8 @@ const messages: LegalMessages = {
       {
         h: "Cookie e archiviazione locale",
         p: [
-          "Memorizziamo la preferenza relativa al tema e la scelta sui cookie nell’archiviazione locale del browser. Questi dati sono necessari affinché il sito funzioni come ci si aspetta.",
-          "Se si accettano i cookie di analisi, utilizziamo Google Analytics per misurare l’utilizzo in forma anonima, ad esempio le pagine visitate, il paese e il tipo di dispositivo. Non utilizziamo strumenti di analisi senza consenso ed è possibile modificare la propria scelta in qualsiasi momento tramite “Impostazioni cookie” nel piè di pagina.",
+          "Memorizziamo alcune preferenze tecniche nell’archiviazione locale del browser. Questi dati sono necessari affinché il sito funzioni come ci si aspetta.",
+          "Utilizziamo Google Analytics per misurare l’utilizzo in forma anonima, ad esempio le pagine visitate, il paese e il tipo di dispositivo. A tale scopo Google Analytics imposta dei cookie. È possibile bloccare o eliminare i cookie dalle impostazioni del browser oppure installare il componente aggiuntivo del browser per la disattivazione fornito da Google (tools.google.com/dlpage/gaoptout).",
           "Qualora in futuro venisse mostrata pubblicità, i cookie per annunci personalizzati saranno utilizzati solo previo consenso e la presente informativa verrà aggiornata prima.",
         ],
       },

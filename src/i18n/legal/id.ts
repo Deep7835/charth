@@ -3,7 +3,7 @@ import type { LegalMessages } from "./en";
 const messages: LegalMessages = {
   privacy: {
     metaTitle: "Kebijakan Privasi",
-    metaDescription: "Cara {site} menangani data Anda: tanpa akun, grafik tetap berada di browser Anda, cookie analitik opsional hanya dengan persetujuan Anda.",
+    metaDescription: "Cara {site} menangani data Anda: tanpa akun, grafik tetap berada di browser Anda, dan statistik penggunaan anonim dengan Google Analytics.",
     h1: "Kebijakan Privasi",
     intro:
       "{site} adalah alat perbandingan tinggi badan gratis. Kami mengumpulkan data sesedikit mungkin. Kebijakan ini menjelaskan apa yang diproses saat Anda menggunakan situs dan pilihan yang Anda miliki.",
@@ -19,8 +19,8 @@ const messages: LegalMessages = {
       {
         h: "Cookie dan penyimpanan lokal",
         p: [
-          "Kami menyimpan preferensi tema dan pilihan cookie Anda di penyimpanan lokal browser Anda. Keduanya diperlukan agar situs berfungsi sesuai harapan Anda.",
-          "Jika Anda menerima cookie analitik, kami menggunakan Google Analytics untuk mengukur penggunaan anonim seperti halaman yang dikunjungi, negara, dan jenis perangkat. Kami tidak menggunakan analitik tanpa persetujuan Anda, dan Anda dapat mengubah pilihan Anda kapan saja melalui “Pengaturan cookie” di footer.",
+          "Kami menyimpan beberapa preferensi teknis di penyimpanan lokal browser Anda. Preferensi ini diperlukan agar situs berfungsi sesuai harapan Anda.",
+          "Kami menggunakan Google Analytics untuk mengukur penggunaan anonim seperti halaman yang dikunjungi, negara, dan jenis perangkat. Google Analytics menetapkan cookie untuk tujuan ini. Anda dapat memblokir atau menghapus cookie melalui pengaturan browser Anda, atau memasang add-on browser penonaktifan dari Google (tools.google.com/dlpage/gaoptout).",
           "Jika di masa mendatang kami menampilkan iklan, cookie iklan yang dipersonalisasi hanya akan digunakan dengan persetujuan Anda, dan kebijakan ini akan diperbarui terlebih dahulu.",
         ],
       },
