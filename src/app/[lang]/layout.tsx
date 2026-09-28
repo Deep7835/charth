@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   formatDetection: { telephone: false },
+  verification: { google: siteConfig.googleSiteVerification },
 };
 
 export const viewport: Viewport = {
