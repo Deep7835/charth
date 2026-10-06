@@ -22,7 +22,7 @@ const messages: LegalMessages = {
         p: [
           "Armazenamos algumas preferências técnicas no armazenamento local do seu navegador. Elas são necessárias para que o site funcione como você espera.",
           "Usamos o Google Analytics para medir o uso anônimo, como páginas visitadas, país e tipo de dispositivo. O Google Analytics define cookies para essa finalidade. Você pode bloquear ou excluir cookies nas configurações do seu navegador ou instalar o complemento de desativação do Google para navegadores (tools.google.com/dlpage/gaoptout).",
-          "Se exibirmos publicidade no futuro, cookies de anúncios personalizados só serão usados com o seu consentimento, e esta política será atualizada antes.",
+          "Usamos o Google AdSense para exibir anúncios. Fornecedores terceiros, incluindo o Google, usam cookies para exibir anúncios com base nas suas visitas anteriores a este e a outros sites. O uso de cookies de publicidade pelo Google permite que ele e seus parceiros exibam anúncios com base nessas visitas. Você pode desativar a publicidade personalizada nas Configurações de anúncios do Google (adssettings.google.com) ou acessar www.aboutads.info para desativar os cookies de alguns fornecedores terceiros.",
         ],
       },
       {

@@ -21,7 +21,7 @@ const messages: LegalMessages = {
         p: [
           "Kami menyimpan beberapa preferensi teknis di penyimpanan lokal browser Anda. Preferensi ini diperlukan agar situs berfungsi sesuai harapan Anda.",
           "Kami menggunakan Google Analytics untuk mengukur penggunaan anonim seperti halaman yang dikunjungi, negara, dan jenis perangkat. Google Analytics menetapkan cookie untuk tujuan ini. Anda dapat memblokir atau menghapus cookie melalui pengaturan browser Anda, atau memasang add-on browser penonaktifan dari Google (tools.google.com/dlpage/gaoptout).",
-          "Jika di masa mendatang kami menampilkan iklan, cookie iklan yang dipersonalisasi hanya akan digunakan dengan persetujuan Anda, dan kebijakan ini akan diperbarui terlebih dahulu.",
+          "Kami menggunakan Google AdSense untuk menampilkan iklan. Vendor pihak ketiga, termasuk Google, menggunakan cookie untuk menayangkan iklan berdasarkan kunjungan Anda sebelumnya ke situs ini dan situs web lain. Penggunaan cookie iklan oleh Google memungkinkan Google dan mitranya menayangkan iklan berdasarkan kunjungan tersebut. Anda dapat menonaktifkan iklan yang dipersonalisasi di Setelan Iklan Google (adssettings.google.com) atau mengunjungi www.aboutads.info untuk menonaktifkan cookie dari beberapa vendor pihak ketiga.",
         ],
       },
       {

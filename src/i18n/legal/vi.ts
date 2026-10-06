@@ -21,7 +21,7 @@ const messages: LegalMessages = {
         p: [
           "Chúng tôi lưu một vài tùy chọn kỹ thuật trong bộ nhớ cục bộ (local storage) của trình duyệt. Những dữ liệu này là cần thiết để trang web hoạt động như bạn mong đợi.",
           "Chúng tôi sử dụng Google Analytics để đo lường việc sử dụng ẩn danh như các trang đã truy cập, quốc gia và loại thiết bị. Google Analytics đặt cookie cho mục đích này. Bạn có thể chặn hoặc xóa cookie trong phần cài đặt của trình duyệt, hoặc cài tiện ích chọn không tham gia của Google cho trình duyệt (tools.google.com/dlpage/gaoptout).",
-          "Nếu sau này chúng tôi hiển thị quảng cáo, cookie quảng cáo được cá nhân hóa sẽ chỉ được sử dụng khi có sự đồng ý của bạn, và chính sách này sẽ được cập nhật trước.",
+          "Chúng tôi sử dụng Google AdSense để hiển thị quảng cáo. Các nhà cung cấp bên thứ ba, bao gồm Google, sử dụng cookie để phân phát quảng cáo dựa trên những lần bạn truy cập trước đây vào trang web này và các trang web khác. Việc Google sử dụng cookie quảng cáo cho phép Google và các đối tác của Google phân phát quảng cáo dựa trên những lần truy cập đó. Bạn có thể chọn không nhận quảng cáo được cá nhân hóa trong phần Cài đặt quảng cáo của Google (adssettings.google.com) hoặc truy cập www.aboutads.info để chọn không sử dụng cookie của một số nhà cung cấp bên thứ ba.",
         ],
       },
       {

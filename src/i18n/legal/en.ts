@@ -24,7 +24,7 @@ const legal = {
         p: [
           "We store a few technical preferences in your browser’s local storage. These are necessary for the site to work as you expect.",
           "We use Google Analytics to measure anonymous usage such as pages visited, country and device type. Google Analytics sets cookies for this purpose. You can block or delete cookies in your browser settings, or install Google’s opt-out browser add-on (tools.google.com/dlpage/gaoptout).",
-          "If we show advertising in the future, it will only use personalised ad cookies with your consent, and this policy will be updated first.",
+          "We use Google AdSense to show ads. Third-party vendors, including Google, use cookies to serve ads based on your previous visits to this and other websites. Google’s use of advertising cookies enables it and its partners to serve ads based on those visits. You can opt out of personalised advertising in Google’s Ads Settings (adssettings.google.com) or visit www.aboutads.info to opt out of some third-party vendors’ cookies.",
         ],
       },
       {

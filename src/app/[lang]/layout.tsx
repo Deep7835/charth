@@ -38,6 +38,16 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
 
   return (
     <html lang={localeMeta[lang].hreflang} dir={localeMeta[lang].dir}>
+      <head>
+        {/* Google AdSense. An async external script is server-rendered into <head> so AdSense's site check sees it. */}
+        {siteConfig.adsenseClient && (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteConfig.adsenseClient}`}
+            crossOrigin="anonymous"
+          />
+        )}
+      </head>
       <body className="min-h-screen bg-white text-slate-900 antialiased">
         <a
           href="#main"

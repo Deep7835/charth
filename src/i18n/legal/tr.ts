@@ -21,7 +21,7 @@ const messages: LegalMessages = {
         p: [
           "Tarayıcınızın yerel depolama alanında birkaç teknik tercih saklarız. Bunlar, sitenin beklediğiniz şekilde çalışması için gereklidir.",
           "Ziyaret edilen sayfalar, ülke ve cihaz türü gibi anonim kullanım verilerini ölçmek için Google Analytics kullanırız. Google Analytics bu amaçla çerezler yerleştirir. Çerezleri tarayıcı ayarlarınızdan engelleyebilir veya silebilir ya da Google’ın devre dışı bırakma tarayıcı eklentisini (tools.google.com/dlpage/gaoptout) yükleyebilirsiniz.",
-          "Gelecekte reklam gösterirsek, kişiselleştirilmiş reklam çerezleri yalnızca onayınızla kullanılacak ve bu politika önceden güncellenecektir.",
+          "Reklam göstermek için Google AdSense kullanırız. Google dahil üçüncü taraf sağlayıcılar, bu ve diğer web sitelerine yaptığınız önceki ziyaretlere dayalı reklamlar sunmak için çerezler kullanır. Google’ın reklam çerezlerini kullanması, Google’ın ve iş ortaklarının bu ziyaretlere dayalı reklamlar sunmasını sağlar. Kişiselleştirilmiş reklamları Google Reklam Ayarları’ndan (adssettings.google.com) devre dışı bırakabilir veya bazı üçüncü taraf sağlayıcıların çerezlerini devre dışı bırakmak için www.aboutads.info adresini ziyaret edebilirsiniz.",
         ],
       },
       {

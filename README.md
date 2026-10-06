@@ -29,6 +29,7 @@ Deployed with [OpenNext for Cloudflare](https://opennext.js.org/cloudflare) as t
 | `NEXT_PUBLIC_SITE_URL` | Canonical origin (default `https://heightcomparechart.com`) |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Contact address on legal pages and footer (default `hello@heightcomparechart.com`) |
 | `NEXT_PUBLIC_GA_ID` | GA4 ID (default `G-ZKPKJYVS4C`), loaded on every page. Set to empty to disable |
+| `NEXT_PUBLIC_ADSENSE_CLIENT` | AdSense publisher ID (default `ca-pub-3245687391344995`, must match `public/ads.txt`). Set to empty to disable |
 
 ## Data
 

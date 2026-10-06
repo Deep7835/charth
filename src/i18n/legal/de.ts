@@ -22,7 +22,7 @@ const messages: LegalMessages = {
         p: [
           "Wir speichern einige technische Einstellungen im lokalen Speicher deines Browsers. Diese sind erforderlich, damit die Website wie erwartet funktioniert.",
           "Wir verwenden Google Analytics, um die Nutzung anonym zu messen, etwa besuchte Seiten, Land und Gerätetyp. Google Analytics setzt zu diesem Zweck Cookies. Du kannst Cookies in deinen Browsereinstellungen blockieren oder löschen oder das Browser-Add-on von Google zur Deaktivierung installieren (tools.google.com/dlpage/gaoptout).",
-          "Falls wir künftig Werbung anzeigen, werden Cookies für personalisierte Werbung nur mit deiner Einwilligung verwendet, und diese Erklärung wird vorher aktualisiert.",
+          "Wir verwenden Google AdSense, um Werbung anzuzeigen. Drittanbieter, einschließlich Google, verwenden Cookies, um Anzeigen auf Grundlage deiner früheren Besuche auf dieser und anderen Websites auszuliefern. Die Verwendung von Werbe-Cookies durch Google ermöglicht es Google und seinen Partnern, Anzeigen auf Grundlage dieser Besuche auszuliefern. Du kannst personalisierte Werbung in den Anzeigeneinstellungen von Google (adssettings.google.com) deaktivieren oder www.aboutads.info besuchen, um die Cookies einiger Drittanbieter zu deaktivieren.",
         ],
       },
       {

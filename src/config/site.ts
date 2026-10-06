@@ -8,6 +8,8 @@ export const siteConfig = {
   gaId: process.env.NEXT_PUBLIC_GA_ID ?? "G-ZKPKJYVS4C",
   /** Google Search Console HTML-tag verification token. */
   googleSiteVerification: "Lei2srYyxW2jJO43NbTbblPs60fgWfPIMNx__JIRMOQ",
+  /** Google AdSense publisher ID (script in <head> on every page; must match public/ads.txt). */
+  adsenseClient: process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "ca-pub-3245687391344995",
   /** Content revision date shown as “Last updated” and used for dateModified. */
   contentUpdated: "2026-09-27",
   legalUpdated: "2026-09-27",
