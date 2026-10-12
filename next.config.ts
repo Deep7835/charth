@@ -35,7 +35,14 @@ const nextConfig: NextConfig = {
   // OpenNext (Cloudflare) bundles the standalone output; only needed on Workers Builds.
   output: process.env.WORKERS_CI === "1" || process.env.OPENNEXT_BUILD === "1" ? "standalone" : undefined,
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    // Shared charts (?c=…) and hug links (?a=…&b=…) are user-made variants of
+    // the tool pages; keep them out of the index so they don't compete with the canonical URL.
+    const noindex = [{ key: "X-Robots-Tag", value: "noindex, follow" }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      { source: "/:path*", has: [{ type: "query", key: "c" }], headers: noindex },
+      { source: "/:path*", has: [{ type: "query", key: "a" }], headers: noindex },
+    ];
   },
   async redirects() {
     return [

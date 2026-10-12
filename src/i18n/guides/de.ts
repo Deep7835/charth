@@ -47,7 +47,7 @@ const messages: GuidesMessages = [
     tool: "growth-chart",
     minutes: 5,
     title: "Wann hört man auf zu wachsen? Was die Daten zeigen",
-    metaTitle: "Bis wann wächst man? Alter für Mädchen und Jungen (Daten)",
+    metaTitle: "Ab welchem Alter hört man auf zu wachsen? Mädchen & Jungen",
     metaDescription:
       "Bis wann wachsen Mädchen und Jungen? Daten zum Wachstum nach Alter aus 200 Ländern zeigen, wann der Wachstumsschub am stärksten ist und wann die Größe stagniert.",
     intro:

@@ -16,7 +16,7 @@ import { formatDate } from "@/components/layout/LegalPage";
 import { RelatedTools } from "@/components/tools/ToolPage";
 import { boardLink } from "@/lib/boardLink";
 import { fmt } from "@/lib/fmt";
-import { people, personById, personName, sexOf, similarPeople, worldPercentile } from "@/lib/people";
+import { nicknameOf, people, personById, personName, personSearchName, personTitleName, rivalOf, sexOf, similarPeople, worldPercentile } from "@/lib/people";
 import { faqSchema, jsonLd, pageMetadata } from "@/lib/seo";
 import { formatPercent } from "@/lib/stats";
 import { formatImperial, formatMetric } from "@/lib/units";
@@ -45,8 +45,21 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/height/[sl
   const f = facts(slug, lang);
   if (!f) return {};
   const m = await getMoreMessages(lang);
-  const v = { name: f.name, cm: f.cm, ftin: f.ftin };
-  return pageMetadata({ locale: lang, path: `/height/${slug}`, title: fill(m.person.metaTitle, v), description: fill(m.person.metaDescription, v) });
+  const rival = rivalOf(f.item);
+  const v = {
+    name: personSearchName(f.item, lang),
+    cm: f.cm,
+    ftin: f.ftin,
+    m: (f.item.heightCm / 100).toFixed(2),
+    rival: personSearchName(rival, lang),
+    rivalCm: formatMetric(rival.heightCm),
+  };
+  return pageMetadata({
+    locale: lang,
+    path: `/height/${slug}`,
+    title: fill(m.person.metaTitle, { ...v, name: personTitleName(f.item, lang) }),
+    description: fill(m.person.metaDescription, v),
+  });
 }
 
 function tallAnswer(p: MoreMessages["person"], pct: number) {
@@ -67,7 +80,8 @@ export default async function PersonPage({ params }: PageProps<"/[lang]/height/[
   const avgMan = libraryById.get("average-man")!;
   const avgWoman = libraryById.get("average-woman")!;
   const similar = similarPeople(item);
-  const rival = similar[0];
+  const rival = rivalOf(item);
+  const nick = nicknameOf(item);
 
   const subjects: Subject[] = [
     { id: item.id, name, heightCm: item.heightCm, kind: item.kind as "male" | "female", build: item.build, adult: item.adult, color: palette[0] },
@@ -136,6 +150,7 @@ export default async function PersonPage({ params }: PageProps<"/[lang]/height/[
       <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{msg.board.categories[item.category]}</p>
       <h1 className="mt-1 text-3xl font-extrabold tracking-tight">{fill(p.h1, { name })}</h1>
       {name !== item.name && <p className="text-slate-500">{item.name}</p>}
+      {nick && <p className="text-sm text-slate-500">{fill(p.aka, { nick })}</p>}
       <p className="mt-3 text-xl text-slate-800">{fmt(p.answer, { name, cm, ftin })}</p>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
@@ -165,6 +180,41 @@ export default async function PersonPage({ params }: PageProps<"/[lang]/height/[
           <p className="mt-4 text-xs text-slate-500">{fill(p.sourceNote, { name })}</p>
         </section>
       </div>
+
+      <section className="mt-10">
+        <h2 className="mb-3 text-xl font-bold tracking-tight">{fill(p.unitsTitle, { name })}</h2>
+        <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {[
+            [p.unitsCm, `${item.heightCm.toFixed(item.heightCm % 1 ? 1 : 0)} cm`],
+            [p.unitsM, `${(item.heightCm / 100).toFixed(2)} m`],
+            [p.unitsFtIn, ftin],
+            [p.unitsIn, `${(item.heightCm / 2.54).toFixed(1)} in`],
+          ].map(([label, value]) => (
+            <div key={label} className="rounded-xl border border-slate-200 px-4 py-3">
+              <dt className="text-xs text-slate-500">{label}</dt>
+              <dd className="mt-0.5 text-lg font-bold tabular-nums">
+                <bdi dir="ltr">{value}</bdi>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className="mt-10 rounded-3xl border border-slate-200 p-5">
+        <h2 className="text-xl font-bold tracking-tight">{fill(p.vsTitle, { name, rival: rivalName })}</h2>
+        <p className="mt-2 text-slate-700">
+          {fmt(p.vsBody, { name, rival: rivalName, cm, rivalCm: formatMetric(rival.heightCm), diff: formatMetric(Math.abs(rivalDiff)) })}{" "}
+          <Link href={`/${lang}/height/${rival.id}`} className="font-medium text-blue-700 hover:underline">
+            {fill(p.h1, { name: rivalName })} →
+          </Link>
+        </p>
+        <Link
+          href={boardLink(lang, [subjects[0], { name: rivalName, heightCm: rival.heightCm, kind: rival.kind as "male" | "female", build: rival.build, adult: rival.adult, color: palette[2] }])}
+          className="mt-3 inline-block rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+        >
+          {fill(p.vsCta, { name, rival: rivalName })} →
+        </Link>
+      </section>
 
       <section className="mt-10">
         <h2 className="mb-3 text-xl font-bold tracking-tight">{p.similarTitle}</h2>
