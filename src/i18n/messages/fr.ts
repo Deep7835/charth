@@ -2,9 +2,9 @@ import type { Messages } from "./en";
 
 const messages: Messages = {
   meta: {
-    title: "Comparateur de taille – Comparer la taille en un graphique",
+    title: "Comparateur de taille – Comparaison et différence de taille",
     description:
-      "Comparateur de taille gratuit : comparez personnes, célébrités, personnages d’anime et objets côte à côte, en cm ou en pieds et pouces. Partage en un clic.",
+      "Comparateur de taille gratuit : comparez la taille de deux personnes ou plus, de célébrités, de personnages et d’objets côte à côte et voyez la différence de taille en cm ou en pieds.",
     ogAlt: "Graphique de comparaison de taille avec plusieurs personnes côte à côte",
   },
   nav: {
@@ -75,7 +75,7 @@ const messages: Messages = {
   home: {
     h1: "Comparateur de taille",
     tagline:
-      "Comparez la taille de personnes, de célébrités, de personnages et d’objets côte à côte sur un seul graphique précis, en centimètres ou en pieds et pouces.",
+      "Comparez la taille de personnes, de célébrités, de personnages et d’objets côte à côte sur un seul graphique précis et voyez la différence de taille, en centimètres ou en pieds et pouces.",
     howTitle: "Comment comparer la taille",
     how: [
       {

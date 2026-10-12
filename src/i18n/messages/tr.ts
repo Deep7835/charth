@@ -2,9 +2,9 @@ import type { Messages } from "./en";
 
 const messages: Messages = {
   meta: {
-    title: "Boy Karşılaştırma Aracı – Boy Farkını Grafikte Görün",
+    title: "Boy Karşılaştırma – Yan Yana Boy Farkı Hesaplama (Kadın Erkek)",
     description:
-      "Ücretsiz boy karşılaştırma aracı: kişileri, ünlüleri, anime karakterlerini ve nesneleri cm ya da ft/in cinsinden ölçekli grafikte yan yana görün, paylaşın.",
+      "Ücretsiz boy karşılaştırma ve boy farkı hesaplama: kadın erkek çiftleri, arkadaşları, ünlüleri ve anime karakterlerini cm ya da ft/in ile ölçekli grafikte yan yana görün.",
     ogAlt: "Yan yana duran birkaç kişiyi gösteren boy karşılaştırma grafiği",
   },
   nav: {
@@ -73,9 +73,9 @@ const messages: Messages = {
     orbitHint: "Döndürmek için sürükle · yakınlaştırmak için kaydır veya sıkıştır",
   },
   home: {
-    h1: "Boy Karşılaştırma Aracı",
+    h1: "Boy Karşılaştırma ve Boy Farkı Hesaplama",
     tagline:
-      "İnsanların, ünlülerin, karakterlerin ve nesnelerin boylarını tek bir doğru ölçekli grafikte, santimetre ya da feet ve inç cinsinden yan yana karşılaştırın.",
+      "İki kişinin, kadın erkek çiftlerin, ünlülerin, karakterlerin ve nesnelerin boylarını tek bir doğru ölçekli grafikte yan yana karşılaştırın; boy farkını santimetre ya da feet ve inç olarak görün.",
     howTitle: "Boylar nasıl karşılaştırılır?",
     how: [
       {

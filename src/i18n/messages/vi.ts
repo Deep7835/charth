@@ -2,9 +2,9 @@ import type { Messages } from "./en";
 
 const messages: Messages = {
   meta: {
-    title: "So Sánh Chiều Cao – Công Cụ Trực Quan, Chính Xác",
+    title: "So Sánh Chiều Cao 2 Người – Mô Phỏng Chiều Cao Trực Quan",
     description:
-      "Công cụ so sánh chiều cao miễn phí: đặt bạn cạnh người nổi tiếng, nhân vật anime, đồ vật trên biểu đồ chính xác (cm hoặc feet-inch). Chia sẻ, tải ảnh dễ dàng.",
+      "So sánh chiều cao 2 người hoặc nhiều người: mô phỏng chiều cao của bạn cạnh người yêu, người nổi tiếng, nhân vật anime trên biểu đồ đúng tỉ lệ (cm hoặc feet-inch). Miễn phí.",
     ogAlt: "Biểu đồ so sánh chiều cao với nhiều người đứng cạnh nhau",
   },
   nav: {
@@ -73,9 +73,9 @@ const messages: Messages = {
     orbitHint: "Kéo để xoay · cuộn hoặc chụm để thu phóng",
   },
   home: {
-    h1: "Công Cụ So Sánh Chiều Cao",
+    h1: "So Sánh Chiều Cao 2 Người – Mô Phỏng Chiều Cao",
     tagline:
-      "So sánh chiều cao của người thật, người nổi tiếng, nhân vật và đồ vật cạnh nhau trên cùng một biểu đồ chính xác, theo centimet hoặc feet và inch.",
+      "So sánh và đo chiều cao giữa 2 người hoặc nhiều người, người nổi tiếng, nhân vật và đồ vật cạnh nhau trên cùng một biểu đồ chính xác, theo centimet hoặc feet và inch.",
     howTitle: "Cách so sánh chiều cao",
     how: [
       {
