@@ -35,14 +35,10 @@ const nextConfig: NextConfig = {
   // OpenNext (Cloudflare) bundles the standalone output; only needed on Workers Builds.
   output: process.env.WORKERS_CI === "1" || process.env.OPENNEXT_BUILD === "1" ? "standalone" : undefined,
   async headers() {
-    // Shared charts (?c=…) and hug links (?a=…&b=…) are user-made variants of
-    // the tool pages; keep them out of the index so they don't compete with the canonical URL.
-    const noindex = [{ key: "X-Robots-Tag", value: "noindex, follow" }];
-    return [
-      { source: "/:path*", headers: securityHeaders },
-      { source: "/:path*", has: [{ type: "query", key: "c" }], headers: noindex },
-      { source: "/:path*", has: [{ type: "query", key: "a" }], headers: noindex },
-    ];
+    // No query-conditional (`has`) headers here: OpenNext on Cloudflare ignores `has`
+    // and applied a noindex meant for ?c=/?a= share links to every page. Those links
+    // already carry a canonical to the clean URL, which is enough.
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
   async redirects() {
     return [
