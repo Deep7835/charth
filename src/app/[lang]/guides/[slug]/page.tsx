@@ -16,6 +16,14 @@ import { jsonLd, pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
+/** Guides published after the site-wide content date; the rest use siteConfig.contentUpdated. */
+const publishedOn: Record<string, string> = {
+  "average-height-in-the-world": "2026-10-17",
+  "am-i-tall-or-short": "2026-10-17",
+  "height-chart-cm-to-feet": "2026-10-17",
+  "body-visualizer": "2026-10-17",
+};
+
 export function generateStaticParams() {
   return guidesEn.map((g) => ({ slug: g.slug }));
 }
@@ -35,6 +43,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
   const g = guides.find((x) => x.slug === slug);
   if (!g) notFound();
   const tool = g.tool as ToolSlug;
+  const date = publishedOn[slug] ?? siteConfig.contentUpdated;
 
   const ld = [
     {
@@ -43,8 +52,8 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
       headline: g.title,
       description: g.metaDescription,
       inLanguage: localeMeta[lang].hreflang,
-      datePublished: siteConfig.contentUpdated,
-      dateModified: siteConfig.contentUpdated,
+      datePublished: date,
+      dateModified: date,
       mainEntityOfPage: absoluteUrl(`/${lang}/guides/${slug}`),
       author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
       publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
@@ -74,7 +83,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
       </nav>
       <h1 className="text-3xl font-extrabold tracking-tight">{g.title}</h1>
       <p className="mt-2 text-sm text-slate-500">
-        <time dateTime={siteConfig.contentUpdated}>{fmt(site.lastUpdated, { date: formatDate(siteConfig.contentUpdated, lang) })}</time> ·{" "}
+        <time dateTime={date}>{fmt(site.lastUpdated, { date: formatDate(date, lang) })}</time> ·{" "}
         {m.guides.minutes.replace("{n}", String(g.minutes))}
       </p>
       <p className="mt-6 text-lg leading-relaxed text-slate-700">{g.intro}</p>

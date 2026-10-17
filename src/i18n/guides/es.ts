@@ -121,6 +121,209 @@ const messages: GuidesMessages = [
       },
     ],
   },
+  {
+    slug: "average-height-in-the-world",
+    tool: "average-height-by-country",
+    minutes: 5,
+    title: "Altura promedio en el mundo: hombres, mujeres y cada país",
+    metaTitle: "Altura promedio en el mundo de hombres y mujeres (por país)",
+    metaDescription:
+      "El hombre promedio mide 170.8 cm y la mujer promedio 158.6 cm. Descubre los países más altos y más bajos, y cuánto ha cambiado la estatura desde 1985.",
+    intro:
+      "En el mundo, el hombre joven promedio mide 170.8 cm (5′ 7″) y la mujer joven promedio 158.6 cm (5′ 2.5″). Detrás de esas dos cifras hay diferencias de más de 20 cm entre países. Todos los datos son estaturas medias a los 19 años del estudio NCD-RisC sobre 200 países (datos de 2019).",
+    sections: [
+      {
+        h: "El promedio mundial",
+        p: [
+          "Hombres: 170.8 cm (5′ 7″). Mujeres: 158.6 cm (5′ 2.5″). La diferencia entre sexos es de unos 12 cm, y en la mayoría de los países está entre 10 y 15 cm.",
+          "Dentro de un país, las estaturas se reparten alrededor del promedio: unos dos tercios de los hombres están a menos de 7 cm de la media nacional, y dos tercios de las mujeres a menos de 6.5 cm.",
+        ],
+      },
+      {
+        h: "Los países más altos",
+        p: [
+          "Países Bajos: hombres 183.8 cm, mujeres 170.4 cm. Los neerlandeses son las personas más altas del mundo en ambos sexos.",
+          "Montenegro: hombres 183.3 cm, mujeres 170.0 cm.",
+          "Estonia (hombres 182.8 cm), Bosnia y Herzegovina (182.5 cm) e Islandia (182.1 cm) completan el top 5 masculino; Dinamarca (169.5 cm), Islandia (168.9 cm) y Letonia (168.8 cm), el femenino.",
+        ],
+      },
+      {
+        h: "Los países más bajos",
+        p: [
+          "Los hombres más bajos están en Timor Oriental (160.1 cm), Laos (162.8 cm), las Islas Salomón y Papúa Nueva Guinea (163.1 cm). Las mujeres más bajas, en Guatemala (150.9 cm), Bangladés y Nepal (152.4 cm) y Timor Oriental (152.7 cm).",
+          "La diferencia entre el país más alto y el más bajo es de unos 24 cm en hombres y 20 cm en mujeres: más que la diferencia media entre hombres y mujeres.",
+        ],
+      },
+      {
+        h: "Altura promedio en países hispanohablantes y otros",
+        p: [
+          "España: hombres 176.1 cm, mujeres 162.0 cm. México: 170.3 cm y 157.9 cm. Argentina: 174.8 cm y 161.2 cm. Colombia: 171.9 cm y 158.0 cm.",
+          "Estados Unidos: 176.9 cm y 163.3 cm. Reino Unido: 178.2 cm y 163.9 cm. Alemania: 180.3 cm y 166.2 cm. Francia: 178.6 cm y 164.5 cm. Italia: 174.4 cm y 161.8 cm. Brasil: 175.7 cm y 162.4 cm.",
+          "China: 175.7 cm y 163.5 cm. Corea del Sur: 175.5 cm y 163.2 cm. Japón: 172.1 cm y 158.5 cm. India: 166.5 cm y 155.2 cm. Indonesia: 166.3 cm y 154.4 cm.",
+        ],
+      },
+      {
+        h: "Cada vez somos más altos",
+        p: [
+          "Desde 1985 el promedio mundial ha subido 2.8 cm en hombres y 2.1 cm en mujeres, sobre todo por una mejor nutrición y salud en la infancia. Los mayores aumentos en hombres se dieron en China (+8.1 cm), Arabia Saudita (+7.7 cm) y Corea del Sur (+6.8 cm). México subió 4.2 cm y Colombia 4.5 cm; en países que ya eran altos, como Estados Unidos (+1.2 cm), apenas ha cambiado.",
+        ],
+      },
+      {
+        h: "Busca tu país",
+        p: [
+          "La herramienta de altura promedio por país muestra los 200 países para hombres y mujeres, en cm y en pies y pulgadas, con buscador y ordenación.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "am-i-tall-or-short",
+    tool: "height-percentile-calculator",
+    minutes: 4,
+    title: "¿Soy alto o bajo? Percentiles de altura para hombres y mujeres",
+    metaTitle: "¿Soy alto o bajo? Percentiles de estatura en hombres y mujeres",
+    metaDescription:
+      "¿Es alto medir 1.75 m para un hombre o 1.65 m para una mujer? Mira a qué porcentaje de personas superas en estatura, en el mundo y en tu país.",
+    intro:
+      "Ser alto depende de con quién te compares. La respuesta más clara es un percentil: el porcentaje de personas de tu sexo a las que superas en estatura. Así se clasifican las alturas más comunes en el mundo, y por qué tu país cambia la respuesta.",
+    sections: [
+      {
+        h: "Hombres: cómo se clasifica tu altura en el mundo",
+        p: [
+          "1.65 m: más alto que alrededor del 21% de los hombres.",
+          "1.70 m: más alto que alrededor del 46%, prácticamente la media.",
+          "1.75 m: más alto que alrededor del 72%.",
+          "1.80 m: más alto que alrededor del 90%.",
+          "1.85 m: más alto que alrededor del 98%.",
+        ],
+      },
+      {
+        h: "Mujeres: cómo se clasifica tu altura en el mundo",
+        p: [
+          "1.50 m: más alta que alrededor del 10% de las mujeres.",
+          "1.55 m: más alta que alrededor del 29%.",
+          "1.60 m: más alta que alrededor del 58%.",
+          "1.65 m: más alta que alrededor del 83%.",
+          "1.70 m: más alta que alrededor del 96%.",
+        ],
+      },
+      {
+        h: "Tu país cambia la respuesta",
+        p: [
+          "Un hombre de 1.75 m es más alto que alrededor del 88% de los hombres en la India, pero solo que el 39% en Estados Unidos y el 11% en los Países Bajos. Una mujer de 1.65 m supera al 93% de las mujeres en la India, al 60% en Estados Unidos y al 21% en los Países Bajos.",
+          "La misma estatura puede ser alta en un país y estar por debajo de la media en otro. Compárate con la gente que te rodea, no con una única cifra mundial.",
+        ],
+      },
+      {
+        h: "Cómo se calculan estas cifras",
+        p: [
+          "La estatura adulta sigue una curva de campana. Los datos usan los promedios mundiales de adultos jóvenes de NCD-RisC (170.8 cm en hombres y 158.6 cm en mujeres) y una dispersión típica de unos 7.1 cm en hombres y 6.6 cm en mujeres. Las poblaciones reales no forman una campana perfecta, así que toma los porcentajes como buenas aproximaciones.",
+        ],
+      },
+      {
+        h: "Calcula tu percentil exacto",
+        p: [
+          "La calculadora de percentil de altura te da tu percentil según tu sexo en cualquiera de 200 países y en el mundo, en cm o en pies y pulgadas.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "height-chart-cm-to-feet",
+    tool: "height-converter",
+    minutes: 3,
+    title: "Tabla de altura: cm a pies y pulgadas (y al revés)",
+    metaTitle: "Tabla de altura: convertir cm a pies y pulgadas",
+    metaDescription:
+      "Convierte tu altura de cm a pies y pulgadas y al revés: tabla de 150 a 200 cm, la fórmula exacta y alturas comunes como 5′ 6″, 5′ 10″ y 6′ 0″ en cm.",
+    intro:
+      "En casi todo el mundo la altura se da en centímetros o metros, pero en Estados Unidos y el Reino Unido se usa en pies y pulgadas. Esta tabla convierte las alturas más comunes en ambos sentidos, y la fórmula sirve para cualquier estatura.",
+    sections: [
+      {
+        h: "De cm a pies y pulgadas",
+        p: [
+          "150 cm = 4′ 11″ · 155 cm = 5′ 1″ · 160 cm = 5′ 3″",
+          "165 cm = 5′ 5″ · 170 cm = 5′ 7″ · 175 cm = 5′ 9″",
+          "180 cm = 5′ 11″ · 185 cm = 6′ 1″ · 190 cm = 6′ 3″",
+          "195 cm = 6′ 5″ · 200 cm = 6′ 7″",
+        ],
+      },
+      {
+        h: "De pies y pulgadas a cm",
+        p: [
+          "5′ 0″ = 152.4 cm · 5′ 2″ = 157.5 cm · 5′ 4″ = 162.6 cm",
+          "5′ 6″ = 167.6 cm · 5′ 8″ = 172.7 cm · 5′ 10″ = 177.8 cm",
+          "6′ 0″ = 182.9 cm · 6′ 2″ = 188.0 cm · 6′ 4″ = 193.0 cm",
+        ],
+      },
+      {
+        h: "La fórmula",
+        p: [
+          "Una pulgada mide exactamente 2.54 cm y un pie tiene 12 pulgadas (30.48 cm). Para pasar de cm a pies y pulgadas, divide entre 2.54 para obtener pulgadas y luego entre 12: el número entero son los pies y el resto, las pulgadas. Por ejemplo, 172 cm ÷ 2.54 = 67.7 in = 5 pies 7.7 pulgadas, que se suele escribir 5′ 8″.",
+          "Para volver a cm, multiplica los pies por 12, suma las pulgadas y multiplica por 2.54. Por ejemplo, 5′ 9″ = 69 in × 2.54 = 175.3 cm.",
+        ],
+      },
+      {
+        h: "La altura en metros",
+        p: [
+          "En los países hispanohablantes la altura suele escribirse en metros: 1.70 m son 170 cm y 1.75 m son 175 cm. Mueve el punto decimal dos posiciones para pasar de metros a centímetros.",
+        ],
+      },
+      {
+        h: "Por qué las conversiones no siempre coinciden",
+        p: [
+          "Las alturas en pies suelen redondearse a la pulgada más cercana, y una pulgada son 2.54 cm, así que dos personas que figuran con 5′ 9″ pueden diferir hasta 2.5 cm. Para un resultado exacto, usa el conversor de altura, que muestra el valor con un decimal.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "body-visualizer",
+    tool: "3d-height-comparison",
+    minutes: 4,
+    title: "Visualizador de cuerpo: comparador de altura y tamaño a escala",
+    metaTitle: "Visualizador de cuerpo – Comparador de altura y tamaño a escala",
+    metaDescription:
+      "Visualizador de cuerpo gratis: compara tu altura y complexión con otras personas, famosos, animales y objetos, en 2D o en 3D giratorio, todo a escala real.",
+    intro:
+      "Cifras como 1.63 m o 1.88 m son difíciles de imaginar. Un visualizador de cuerpo te dibuja a escala para que veas cómo se ve de verdad una altura: junto a tu pareja, un famoso, una puerta o un animal.",
+    sections: [
+      {
+        h: "Qué muestra un visualizador de cuerpo",
+        p: [
+          "Todas las figuras se dibujan en la misma escala vertical, así que una diferencia de 10 cm se ve exactamente como 10 cm. Puedes escribir la altura en centímetros o en pies y pulgadas, y la cuadrícula muestra ambas unidades.",
+          "Las proporciones cambian con la edad: los niños tienen la cabeza más grande y las piernas más cortas, y los adultos siguen una proporción estándar de 7.5 cabezas. Para adultos puedes elegir complexión delgada, media o robusta.",
+        ],
+      },
+      {
+        h: "Gráfico 2D o vista 3D",
+        p: [
+          "El comparador de altura en 2D es la forma más precisa de leer una diferencia: todas las figuras aparecen lado a lado sobre una cuadrícula de medida.",
+          "La vista 3D convierte las mismas figuras en modelos que puedes girar y ampliar, para mirar desde la altura de un niño o rodear al grupo. Las alturas son exactas; solo el ancho y la profundidad se basan en proporciones medias.",
+        ],
+      },
+      {
+        h: "Comparador de tamaño con objetos y animales",
+        p: [
+          "Un visualizador de cuerpo también es un comparador de tamaño. Añade puertas, coches, árboles o monumentos tan altos como el Burj Khalifa, o crea un objeto personalizado con cualquier altura y anchura, para ver qué tan grande es algo junto a una persona.",
+        ],
+      },
+      {
+        h: "Consejos para una imagen precisa",
+        p: [
+          "Mide tu altura sin zapatos, por la mañana y contra una pared.",
+          "Usa la misma unidad para todos, y recuerda que las alturas en pies suelen redondearse a la pulgada.",
+          "Las estaturas de famosos son valores publicados y pueden variar uno o dos centímetros según la fuente.",
+        ],
+      },
+      {
+        h: "Pruébalo",
+        p: [
+          "Abre la comparación de altura en 3D para ver personas, personajes, animales y objetos como modelos giratorios, o usa el gráfico principal para alinear a todas las personas que quieras y compartir el resultado como enlace o imagen.",
+        ],
+      },
+    ],
+  },
 ];
 
 export default messages;

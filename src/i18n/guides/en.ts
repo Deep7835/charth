@@ -120,6 +120,210 @@ const guides = [
       },
     ],
   },
+  {
+    slug: "average-height-in-the-world",
+    tool: "average-height-by-country",
+    minutes: 5,
+    title: "Average height in the world: men, women and every country",
+    metaTitle: "Average Height in the World for Men and Women (by Country)",
+    metaDescription:
+      "The average man is 170.8 cm (5′ 7″) and the average woman 158.6 cm (5′ 2.5″). See the tallest and shortest countries and how heights changed since 1985.",
+    intro:
+      "Across the world, the average young man is 170.8 cm (5′ 7″) tall and the average young woman 158.6 cm (5′ 2.5″). Behind those two numbers are differences of more than 20 cm between countries. All figures here are mean heights at age 19 from the NCD-RisC study of 200 countries (2019 data).",
+    sections: [
+      {
+        h: "The world average",
+        p: [
+          "Men: 170.8 cm (5′ 7″). Women: 158.6 cm (5′ 2.5″). The gap between the sexes is about 12 cm (4.8 in), and it is between 10 and 15 cm in most countries.",
+          "Heights within a country spread out around the average: about two-thirds of men are within 7 cm of their national average, and two-thirds of women within 6.5 cm.",
+        ],
+      },
+      {
+        h: "The tallest countries",
+        p: [
+          "Netherlands: men 183.8 cm, women 170.4 cm. The Dutch are the tallest people in the world for both sexes.",
+          "Montenegro: men 183.3 cm, women 170.0 cm.",
+          "Estonia (men 182.8 cm), Bosnia and Herzegovina (182.5 cm) and Iceland (182.1 cm) complete the top five for men; Denmark (169.5 cm), Iceland (168.9 cm) and Latvia (168.8 cm) for women.",
+        ],
+      },
+      {
+        h: "The shortest countries",
+        p: [
+          "The shortest men are in Timor-Leste (160.1 cm), Laos (162.8 cm), the Solomon Islands and Papua New Guinea (163.1 cm). The shortest women are in Guatemala (150.9 cm), Bangladesh and Nepal (152.4 cm) and Timor-Leste (152.7 cm).",
+          "The difference between the tallest and shortest country is about 24 cm for men and 20 cm for women — more than the average gap between men and women.",
+        ],
+      },
+      {
+        h: "Average height in popular countries",
+        p: [
+          "United States: men 176.9 cm, women 163.3 cm. United Kingdom: 178.2 cm and 163.9 cm. Germany: 180.3 cm and 166.2 cm. France: 178.6 cm and 164.5 cm.",
+          "Spain: 176.1 cm and 162.0 cm. Italy: 174.4 cm and 161.8 cm. Brazil: 175.7 cm and 162.4 cm. Mexico: 170.3 cm and 157.9 cm.",
+          "Russia: 176.6 cm and 164.5 cm. Turkey: 176.4 cm and 161.8 cm. Egypt: 174.6 cm and 160.9 cm. Saudi Arabia: 170.7 cm and 158.8 cm.",
+          "China: 175.7 cm and 163.5 cm. South Korea: 175.5 cm and 163.2 cm. Japan: 172.1 cm and 158.5 cm. Vietnam: 168.9 cm and 158.4 cm. India: 166.5 cm and 155.2 cm. Indonesia: 166.3 cm and 154.4 cm.",
+        ],
+      },
+      {
+        h: "People are getting taller",
+        p: [
+          "Since 1985 the world average has risen by 2.8 cm for men and 2.1 cm for women, mostly because of better childhood nutrition and health. The biggest gains for men were in China (+8.1 cm), Saudi Arabia (+7.7 cm) and South Korea (+6.8 cm). In countries that were already tall, such as the United States (+1.2 cm), heights have barely changed.",
+        ],
+      },
+      {
+        h: "Find your country",
+        p: [
+          "The average height by country tool lists all 200 countries for men and women, in cm and in feet and inches, and lets you search and sort the table.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "am-i-tall-or-short",
+    tool: "height-percentile-calculator",
+    minutes: 4,
+    title: "Am I tall or short? Height percentiles for men and women",
+    metaTitle: "Am I Tall or Short? Height Percentiles for Men & Women",
+    metaDescription:
+      "Is 175 cm (5′ 9″) tall for a man, or 165 cm (5′ 5″) tall for a woman? See what percentage of people you are taller than, worldwide and in your country.",
+    intro:
+      "Whether you count as tall depends on who you compare yourself with. The clearest answer is a percentile: the share of people of your sex you are taller than. Here is how common heights rank worldwide, and why your country changes the answer.",
+    sections: [
+      {
+        h: "Men: how heights rank worldwide",
+        p: [
+          "165 cm (5′ 5″): taller than about 21% of men.",
+          "170 cm (5′ 7″): taller than about 46% of men — almost exactly average.",
+          "175 cm (5′ 9″): taller than about 72% of men.",
+          "180 cm (5′ 11″): taller than about 90% of men.",
+          "185 cm (6′ 1″): taller than about 98% of men.",
+        ],
+      },
+      {
+        h: "Women: how heights rank worldwide",
+        p: [
+          "150 cm (4′ 11″): taller than about 10% of women.",
+          "155 cm (5′ 1″): taller than about 29% of women.",
+          "160 cm (5′ 3″): taller than about 58% of women.",
+          "165 cm (5′ 5″): taller than about 83% of women.",
+          "170 cm (5′ 7″): taller than about 96% of women.",
+        ],
+      },
+      {
+        h: "Your country changes the answer",
+        p: [
+          "A man who is 175 cm tall is taller than about 88% of men in India, but only about 39% in the United States and 11% in the Netherlands. A woman who is 165 cm tall is taller than about 93% of women in India, 60% in the United States and 21% in the Netherlands.",
+          "So the same height can be tall in one country and below average in another. Compare yourself with the people around you, not with a single world number.",
+        ],
+      },
+      {
+        h: "How these numbers are calculated",
+        p: [
+          "Adult heights follow a bell curve. The figures above use the world averages for young adults from NCD-RisC (170.8 cm for men, 158.6 cm for women) and a typical spread of about 7.1 cm for men and 6.6 cm for women. Real populations are not perfectly bell-shaped, so treat the percentages as close estimates.",
+        ],
+      },
+      {
+        h: "Check your exact percentile",
+        p: [
+          "The height percentile calculator gives your percentile for your sex in any of 200 countries and worldwide, in cm or feet and inches.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "height-chart-cm-to-feet",
+    tool: "height-converter",
+    minutes: 3,
+    title: "Height chart: cm to feet and inches (and back)",
+    metaTitle: "Height Chart: cm to Feet and Inches Conversion Table",
+    metaDescription:
+      "Convert height from cm to feet and inches and back: a quick chart from 150 to 200 cm, the exact formula, and common heights like 5′ 6″, 5′ 10″ and 6′ 0″ in cm.",
+    intro:
+      "Heights are given in centimetres in most of the world and in feet and inches in the United States and the United Kingdom. This chart converts the most common heights both ways, and the formula below works for any height.",
+    sections: [
+      {
+        h: "cm to feet and inches",
+        p: [
+          "150 cm = 4′ 11″ · 155 cm = 5′ 1″ · 160 cm = 5′ 3″",
+          "165 cm = 5′ 5″ · 170 cm = 5′ 7″ · 175 cm = 5′ 9″",
+          "180 cm = 5′ 11″ · 185 cm = 6′ 1″ · 190 cm = 6′ 3″",
+          "195 cm = 6′ 5″ · 200 cm = 6′ 7″",
+        ],
+      },
+      {
+        h: "Feet and inches to cm",
+        p: [
+          "5′ 0″ = 152.4 cm · 5′ 2″ = 157.5 cm · 5′ 4″ = 162.6 cm",
+          "5′ 6″ = 167.6 cm · 5′ 8″ = 172.7 cm · 5′ 10″ = 177.8 cm",
+          "6′ 0″ = 182.9 cm · 6′ 2″ = 188.0 cm · 6′ 4″ = 193.0 cm",
+        ],
+      },
+      {
+        h: "The formula",
+        p: [
+          "One inch is exactly 2.54 cm and one foot is 12 inches (30.48 cm). To convert cm to feet and inches, divide by 2.54 to get inches, then divide by 12: the whole number is feet and the remainder is inches. For example, 172 cm ÷ 2.54 = 67.7 in = 5 ft 7.7 in, which is usually written 5′ 8″.",
+          "To convert back, multiply the feet by 12, add the inches and multiply by 2.54. For example, 5′ 9″ = 69 in × 2.54 = 175.3 cm.",
+        ],
+      },
+      {
+        h: "Height in metres",
+        p: [
+          "In many countries height is written in metres: 1.70 m is 170 cm, and 1.75 m is 175 cm. Move the decimal point two places to switch between metres and centimetres.",
+        ],
+      },
+      {
+        h: "Why converted heights don’t always match",
+        p: [
+          "Heights in feet are usually rounded to the nearest inch, and an inch is 2.54 cm, so two people listed at 5′ 9″ can differ by up to 2.5 cm. For an exact answer, use the height converter, which shows the result to a tenth of a centimetre or inch.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "body-visualizer",
+    tool: "3d-height-comparison",
+    minutes: 4,
+    title: "Body visualizer: see your height and size to scale",
+    metaTitle: "Body Visualizer – See Your Height and Body Size to Scale",
+    metaDescription:
+      "Use a free body visualizer to see your height and build next to other people, celebrities, animals and objects, in 2D or rotatable 3D, all on one true scale.",
+    intro:
+      "Numbers like 163 cm or 6′ 2″ are hard to picture. A body visualizer draws you to scale so you can see what a height actually looks like — next to a partner, a celebrity, a door or an animal.",
+    sections: [
+      {
+        h: "What a body visualizer shows",
+        p: [
+          "Each figure is drawn on one shared vertical scale, so a 10 cm difference looks exactly like 10 cm. You can enter heights in centimetres or in feet and inches, and the grid shows both.",
+          "Body proportions change with age: children are drawn with larger heads and shorter legs, while adults follow a standard 7.5-head proportion. For adults you can choose a slim, average or broad build.",
+        ],
+      },
+      {
+        h: "2D chart or 3D view",
+        p: [
+          "The 2D height comparison chart is the most precise way to read a difference: every figure stands side by side against a measuring grid.",
+          "The 3D view turns the same figures into models you can rotate and zoom, so you can look from a child’s eye level or walk around the group. Heights are exact; only width and depth are based on average proportions.",
+        ],
+      },
+      {
+        h: "Size comparison with objects and animals",
+        p: [
+          "A body visualizer is also a size comparison tool. Add doors, cars, trees or landmarks as tall as the Burj Khalifa, or create a custom object with any height and width, to see how big something really is next to a person.",
+        ],
+      },
+      {
+        h: "Tips for an accurate picture",
+        p: [
+          "Measure your height without shoes, in the morning, against a wall.",
+          "Use the same unit for everyone, and remember that heights in feet are often rounded to the nearest inch.",
+          "Celebrity heights are commonly reported values and can differ by a centimetre or two between sources.",
+        ],
+      },
+      {
+        h: "Try it",
+        p: [
+          "Open the 3D height comparison to see people, characters, animals and objects as rotatable models, or use the main chart to line up as many people as you like and share the result as a link or image.",
+        ],
+      },
+    ],
+  },
 ];
 
 export default guides;

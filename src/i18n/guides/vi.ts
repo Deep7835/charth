@@ -121,6 +121,216 @@ const messages: GuidesMessages = [
       },
     ],
   },
+  {
+    slug: "average-height-in-the-world",
+    tool: "average-height-by-country",
+    minutes: 5,
+    title: "Chiều cao trung bình thế giới: nam, nữ và từng quốc gia",
+    metaTitle: "Chiều Cao Trung Bình Của Nam và Nữ Trên Thế Giới (Theo Quốc Gia)",
+    metaDescription:
+      "Nam giới trung bình cao 170.8 cm, nữ giới 158.6 cm. Xem chiều cao trung bình của người Việt Nam, các nước cao nhất và thấp nhất, và sự thay đổi từ năm 1985.",
+    intro:
+      "Trên toàn thế giới, nam thanh niên trung bình cao 170.8 cm và nữ thanh niên trung bình cao 158.6 cm. Đằng sau hai con số này là chênh lệch hơn 20 cm giữa các quốc gia. Mọi số liệu ở đây là chiều cao trung bình ở tuổi 19 theo nghiên cứu NCD-RisC trên 200 quốc gia (dữ liệu năm 2019).",
+    sections: [
+      {
+        h: "Mức trung bình thế giới",
+        p: [
+          "Nam: 170.8 cm (5′ 7″). Nữ: 158.6 cm (5′ 2.5″). Chênh lệch giữa nam và nữ khoảng 12 cm, và ở hầu hết các nước nằm trong khoảng 10 đến 15 cm.",
+          "Trong một quốc gia, chiều cao phân bố quanh mức trung bình: khoảng hai phần ba nam giới chênh không quá 7 cm so với trung bình cả nước, và hai phần ba nữ giới không quá 6.5 cm.",
+        ],
+      },
+      {
+        h: "Chiều cao trung bình của người Việt Nam và Đông Nam Á",
+        p: [
+          "Việt Nam: nam 168.9 cm, nữ 158.4 cm. Từ năm 1985, chiều cao trung bình của nam giới Việt Nam tăng 5.1 cm và nữ giới tăng 5.4 cm — thuộc nhóm tăng nhanh trong khu vực.",
+          "Thái Lan: nam 171.6 cm, nữ 159.4 cm. Singapore: 173.5 cm và 161.3 cm. Malaysia: 169.2 cm và 157.1 cm. Indonesia: 166.3 cm và 154.4 cm. Philippines: 165.2 cm và 154.1 cm.",
+        ],
+      },
+      {
+        h: "Những nước cao nhất",
+        p: [
+          "Hà Lan: nam 183.8 cm, nữ 170.4 cm. Người Hà Lan cao nhất thế giới ở cả hai giới.",
+          "Montenegro: nam 183.3 cm, nữ 170.0 cm.",
+          "Estonia (nam 182.8 cm), Bosnia và Herzegovina (182.5 cm) và Iceland (182.1 cm) hoàn thiện top 5 nam; Đan Mạch (169.5 cm), Iceland (168.9 cm) và Latvia (168.8 cm) ở nữ.",
+        ],
+      },
+      {
+        h: "Những nước thấp nhất",
+        p: [
+          "Nam giới thấp nhất ở Đông Timor (160.1 cm), Lào (162.8 cm), quần đảo Solomon và Papua New Guinea (163.1 cm). Nữ giới thấp nhất ở Guatemala (150.9 cm), Bangladesh và Nepal (152.4 cm) và Đông Timor (152.7 cm).",
+          "Khoảng cách giữa nước cao nhất và thấp nhất là khoảng 24 cm ở nam và 20 cm ở nữ — lớn hơn cả chênh lệch trung bình giữa nam và nữ.",
+        ],
+      },
+      {
+        h: "Chiều cao trung bình ở các nước phổ biến khác",
+        p: [
+          "Mỹ: nam 176.9 cm, nữ 163.3 cm. Anh: 178.2 cm và 163.9 cm. Đức: 180.3 cm và 166.2 cm. Pháp: 178.6 cm và 164.5 cm.",
+          "Trung Quốc: 175.7 cm và 163.5 cm. Hàn Quốc: 175.5 cm và 163.2 cm. Nhật Bản: 172.1 cm và 158.5 cm. Ấn Độ: 166.5 cm và 155.2 cm.",
+          "Nga: 176.6 cm và 164.5 cm. Brazil: 175.7 cm và 162.4 cm. Ả Rập Xê Út: 170.7 cm và 158.8 cm.",
+        ],
+      },
+      {
+        h: "Con người ngày càng cao hơn",
+        p: [
+          "Từ năm 1985, mức trung bình thế giới tăng 2.8 cm ở nam và 2.1 cm ở nữ, chủ yếu nhờ dinh dưỡng và sức khỏe thời thơ ấu tốt hơn. Nam giới tăng nhiều nhất ở Trung Quốc (+8.1 cm), Ả Rập Xê Út (+7.7 cm) và Hàn Quốc (+6.8 cm). Ở những nước vốn đã cao như Mỹ (+1.2 cm), chiều cao hầu như không đổi.",
+        ],
+      },
+      {
+        h: "Tìm quốc gia của bạn",
+        p: [
+          "Công cụ chiều cao trung bình theo quốc gia liệt kê đủ 200 nước cho cả nam và nữ, theo cm và feet-inch, có tìm kiếm và sắp xếp.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "am-i-tall-or-short",
+    tool: "height-percentile-calculator",
+    minutes: 4,
+    title: "Tôi cao hay thấp? Phân vị chiều cao cho nam và nữ",
+    metaTitle: "Tôi Cao Hay Thấp? Phân Vị Chiều Cao Của Nam và Nữ",
+    metaDescription:
+      "Nam cao 1m70 có phải là cao? Nữ cao 1m60 thì sao? Xem bạn cao hơn bao nhiêu phần trăm người ở Việt Nam và trên thế giới.",
+    intro:
+      "Bạn có được coi là cao hay không phụ thuộc vào việc so với ai. Câu trả lời rõ ràng nhất là phân vị: tỷ lệ phần trăm người cùng giới thấp hơn bạn. Dưới đây là vị trí của các chiều cao phổ biến trên thế giới, và lý do quốc gia của bạn làm thay đổi câu trả lời.",
+    sections: [
+      {
+        h: "Nam: chiều cao của bạn xếp ở đâu trên thế giới",
+        p: [
+          "165 cm (1m65): cao hơn khoảng 21% nam giới.",
+          "170 cm (1m70): cao hơn khoảng 46% — gần như đúng mức trung bình.",
+          "175 cm (1m75): cao hơn khoảng 72%.",
+          "180 cm (1m80): cao hơn khoảng 90%.",
+          "185 cm (1m85): cao hơn khoảng 98%.",
+        ],
+      },
+      {
+        h: "Nữ: chiều cao của bạn xếp ở đâu trên thế giới",
+        p: [
+          "150 cm (1m50): cao hơn khoảng 10% nữ giới.",
+          "155 cm (1m55): cao hơn khoảng 29%.",
+          "160 cm (1m60): cao hơn khoảng 58%.",
+          "165 cm (1m65): cao hơn khoảng 83%.",
+          "170 cm (1m70): cao hơn khoảng 96%.",
+        ],
+      },
+      {
+        h: "Quốc gia của bạn thay đổi câu trả lời",
+        p: [
+          "Một người nam cao 175 cm cao hơn khoảng 88% nam giới ở Ấn Độ, nhưng chỉ 39% ở Mỹ và 11% ở Hà Lan. Một người nữ cao 165 cm cao hơn khoảng 93% nữ giới ở Ấn Độ, 60% ở Mỹ và 21% ở Hà Lan.",
+          "Vì vậy cùng một chiều cao có thể là cao ở nước này nhưng dưới trung bình ở nước khác. Hãy so sánh với những người xung quanh bạn, không phải với một con số chung của thế giới.",
+        ],
+      },
+      {
+        h: "Các con số được tính như thế nào",
+        p: [
+          "Chiều cao người trưởng thành phân bố theo đường cong hình chuông. Các số liệu trên dùng mức trung bình thế giới của người trẻ trưởng thành theo NCD-RisC (nam 170.8 cm, nữ 158.6 cm) và độ phân tán điển hình khoảng 7.1 cm ở nam và 6.6 cm ở nữ. Dân số thực tế không tạo thành hình chuông hoàn hảo, nên hãy xem các tỷ lệ này là ước tính sát thực tế.",
+        ],
+      },
+      {
+        h: "Xem phân vị chính xác của bạn",
+        p: [
+          "Công cụ tính phân vị chiều cao cho biết phân vị theo giới tính của bạn ở 200 quốc gia và trên toàn thế giới, theo cm hoặc feet-inch.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "height-chart-cm-to-feet",
+    tool: "height-converter",
+    minutes: 3,
+    title: "Bảng chiều cao: đổi cm sang feet và inch (và ngược lại)",
+    metaTitle: "Bảng Quy Đổi Chiều Cao: cm Sang Feet và Inch",
+    metaDescription:
+      "Đổi chiều cao từ cm sang feet-inch và ngược lại: bảng từ 150 đến 200 cm, công thức chính xác và các chiều cao phổ biến như 5′ 6″, 5′ 10″, 6′ 0″ theo cm.",
+    intro:
+      "Ở Việt Nam và hầu hết thế giới, chiều cao được tính bằng centimet hoặc mét, nhưng Mỹ và Anh dùng feet và inch. Bảng này quy đổi các chiều cao phổ biến theo cả hai chiều, và công thức bên dưới áp dụng cho mọi chiều cao.",
+    sections: [
+      {
+        h: "Từ cm sang feet và inch",
+        p: [
+          "150 cm = 4′ 11″ · 155 cm = 5′ 1″ · 160 cm = 5′ 3″",
+          "165 cm = 5′ 5″ · 170 cm = 5′ 7″ · 175 cm = 5′ 9″",
+          "180 cm = 5′ 11″ · 185 cm = 6′ 1″ · 190 cm = 6′ 3″",
+          "195 cm = 6′ 5″ · 200 cm = 6′ 7″",
+        ],
+      },
+      {
+        h: "Từ feet và inch sang cm",
+        p: [
+          "5′ 0″ = 152.4 cm · 5′ 2″ = 157.5 cm · 5′ 4″ = 162.6 cm",
+          "5′ 6″ = 167.6 cm · 5′ 8″ = 172.7 cm · 5′ 10″ = 177.8 cm",
+          "6′ 0″ = 182.9 cm · 6′ 2″ = 188.0 cm · 6′ 4″ = 193.0 cm",
+        ],
+      },
+      {
+        h: "Công thức",
+        p: [
+          "Một inch đúng bằng 2.54 cm và một foot bằng 12 inch (30.48 cm). Để đổi cm sang feet-inch, chia cho 2.54 để được số inch, rồi chia cho 12: phần nguyên là feet, phần dư là inch. Ví dụ: 172 cm ÷ 2.54 = 67.7 inch = 5 feet 7.7 inch, thường được viết là 5′ 8″.",
+          "Để đổi ngược lại, nhân số feet với 12, cộng số inch rồi nhân với 2.54. Ví dụ: 5′ 9″ = 69 inch × 2.54 = 175.3 cm.",
+        ],
+      },
+      {
+        h: "Chiều cao theo mét",
+        p: [
+          "Ở Việt Nam chiều cao thường được nói theo mét: 1m70 là 170 cm, 1m75 là 175 cm. Dời dấu thập phân hai chữ số để chuyển giữa mét và centimet.",
+        ],
+      },
+      {
+        h: "Vì sao số đo quy đổi không luôn khớp",
+        p: [
+          "Chiều cao theo feet thường được làm tròn đến inch gần nhất, mà một inch là 2.54 cm, nên hai người cùng ghi 5′ 9″ có thể chênh nhau tới 2.5 cm. Để có kết quả chính xác, hãy dùng công cụ đổi chiều cao, hiển thị kết quả đến một chữ số thập phân.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "body-visualizer",
+    tool: "3d-height-comparison",
+    minutes: 4,
+    title: "Body visualizer: xem chiều cao và vóc dáng của bạn theo đúng tỷ lệ",
+    metaTitle: "Body Visualizer – Xem Chiều Cao và Vóc Dáng Theo Đúng Tỷ Lệ",
+    metaDescription:
+      "Body visualizer miễn phí: so sánh chiều cao và vóc dáng của bạn với người khác, người nổi tiếng, động vật và đồ vật ở dạng 2D hoặc 3D xoay được, cùng một tỷ lệ thật.",
+    intro:
+      "Những con số như 1m63 hay 1m88 rất khó hình dung. Body visualizer vẽ bạn theo đúng tỷ lệ để bạn thấy một chiều cao thực sự trông như thế nào — đứng cạnh người yêu, người nổi tiếng, cánh cửa hay một con vật.",
+    sections: [
+      {
+        h: "Body visualizer cho bạn thấy gì",
+        p: [
+          "Mọi hình người được vẽ trên cùng một thang đo dọc, nên chênh lệch 10 cm trông đúng bằng 10 cm. Bạn có thể nhập chiều cao bằng centimet hoặc feet-inch, và lưới hiển thị cả hai đơn vị.",
+          "Tỷ lệ cơ thể thay đổi theo tuổi: trẻ em được vẽ với đầu to hơn và chân ngắn hơn, còn người lớn theo tỷ lệ chuẩn 7.5 đầu. Với người lớn, bạn có thể chọn dáng gầy, trung bình hoặc vạm vỡ.",
+        ],
+      },
+      {
+        h: "Biểu đồ 2D hay chế độ 3D",
+        p: [
+          "Biểu đồ so sánh chiều cao 2D là cách chính xác nhất để đọc chênh lệch: mọi hình đứng cạnh nhau trên một lưới đo.",
+          "Chế độ 3D biến chính những hình đó thành mô hình bạn có thể xoay và phóng to, để nhìn từ tầm mắt của một đứa trẻ hoặc đi vòng quanh cả nhóm. Chiều cao là chính xác; chỉ chiều rộng và độ dày dựa trên tỷ lệ trung bình.",
+        ],
+      },
+      {
+        h: "So sánh kích thước với đồ vật và động vật",
+        p: [
+          "Body visualizer cũng là một công cụ so sánh kích thước. Thêm cửa, ô tô, cây hoặc công trình cao như Burj Khalifa, hoặc tạo vật thể tùy chỉnh với chiều cao và chiều rộng bất kỳ, để thấy một thứ thực sự lớn thế nào khi đứng cạnh con người.",
+        ],
+      },
+      {
+        h: "Mẹo để có hình ảnh chính xác",
+        p: [
+          "Đo chiều cao khi không mang giày, vào buổi sáng và đứng sát tường.",
+          "Dùng cùng một đơn vị cho mọi người, và nhớ rằng chiều cao theo feet thường được làm tròn đến inch.",
+          "Chiều cao của người nổi tiếng là số liệu thường được công bố và có thể chênh một hai centimet giữa các nguồn.",
+        ],
+      },
+      {
+        h: "Thử ngay",
+        p: [
+          "Mở so sánh chiều cao 3D để xem người, nhân vật, động vật và đồ vật dưới dạng mô hình xoay được, hoặc dùng biểu đồ chính để xếp bao nhiêu người tùy thích và chia sẻ kết quả dưới dạng liên kết hoặc hình ảnh.",
+        ],
+      },
+    ],
+  },
 ];
 
 export default messages;
