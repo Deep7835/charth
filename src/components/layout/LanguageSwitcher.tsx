@@ -32,25 +32,24 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
         <span aria-hidden>🌐</span>
         <span className="uppercase">{locale}</span>
       </button>
-      {open && (
-        <ul className="absolute end-0 z-30 mt-1 w-52 rounded-xl border border-slate-200 bg-white p-1 shadow-lg">
-          {locales.map((l) => (
-            <li key={l}>
-              <Link
-                href={`/${l}${rest}`}
-                hrefLang={localeMeta[l].hreflang}
-                onClick={() => setOpen(false)}
-                className={`flex items-center justify-between rounded-lg px-3 py-1.5 text-sm hover:bg-slate-50 ${
-                  l === locale ? "font-semibold text-blue-700" : "text-slate-700"
-                }`}
-              >
-                {localeMeta[l].label}
-                {l === locale && <span aria-hidden>✓</span>}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Always in the HTML (hidden while closed) so crawlers can follow each page to its translations. */}
+      <ul hidden={!open} className="absolute end-0 z-30 mt-1 w-52 rounded-xl border border-slate-200 bg-white p-1 shadow-lg">
+        {locales.map((l) => (
+          <li key={l}>
+            <Link
+              href={`/${l}${rest}`}
+              hrefLang={localeMeta[l].hreflang}
+              onClick={() => setOpen(false)}
+              className={`flex items-center justify-between rounded-lg px-3 py-1.5 text-sm hover:bg-slate-50 ${
+                l === locale ? "font-semibold text-blue-700" : "text-slate-700"
+              }`}
+            >
+              {localeMeta[l].label}
+              {l === locale && <span aria-hidden>✓</span>}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
