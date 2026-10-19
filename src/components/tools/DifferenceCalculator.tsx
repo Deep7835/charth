@@ -148,6 +148,7 @@ export function DifferenceCalculator({ t, common, locale, defaultUnit }: Props) 
         </div>
         <MiniBoard subjects={subjects} unit={unit} title={t.difference} />
         <Link
+          rel="nofollow"
           href={boardLink(locale, subjects, unit)}
           className="self-start rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
         >

@@ -158,6 +158,7 @@ export default async function PersonPage({ params }: PageProps<"/[lang]/height/[
           <h2 className="sr-only">{fill(p.boardTitle, { name })}</h2>
           <MiniBoard subjects={subjects} unit={localeMeta[lang].imperial ? "ft" : "cm"} title={fill(p.boardTitle, { name })} className="h-96" />
           <Link
+            rel="nofollow"
             href={boardLink(lang, [subjects[0], { name: msg.board.defaultMan, heightCm: 175, kind: "male", color: palette[2] }])}
             className="mt-3 inline-block rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
           >
@@ -209,6 +210,7 @@ export default async function PersonPage({ params }: PageProps<"/[lang]/height/[
           </Link>
         </p>
         <Link
+          rel="nofollow"
           href={boardLink(lang, [subjects[0], { name: rivalName, heightCm: rival.heightCm, kind: rival.kind as "male" | "female", build: rival.build, adult: rival.adult, color: palette[2] }])}
           className="mt-3 inline-block rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
         >
